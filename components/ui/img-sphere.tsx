@@ -47,14 +47,6 @@ export interface SphericalPosition {
   radius: number; // Distance from center
 }
 
-export interface WorldPosition extends Position3D {
-  scale: number;
-  zIndex: number;
-  isVisible: boolean;
-  fadeOpacity: number;
-  originalIndex: number;
-}
-
 export interface ImageData {
   id: string;
   src: string;
@@ -128,13 +120,13 @@ const SphereImageGrid: React.FC<SphereImageGridProps> = ({
   containerSize = 400,
   sphereRadius = 200,
   dragSensitivity = 0.5,
-  momentumDecay = 0.95,
-  maxRotationSpeed = 5,
+  momentumDecay = 0.96,
+  maxRotationSpeed = 4,
   baseImageScale = 0.12,
   hoverScale = 1.2,
   perspective = 1000,
   autoRotate = false,
-  autoRotateSpeed = 0.3,
+  autoRotateSpeed = 0.2,
   className = ''
 }) => {
   // ==========================================
@@ -155,6 +147,7 @@ const SphereImageGrid: React.FC<SphereImageGridProps> = ({
   const lastMousePos = useRef<MousePosition>({ x: 0, y: 0 });
   const animationFrame = useRef<number | null>(null);
   const imageElementsRef = useRef<Map<number, HTMLDivElement>>(new Map());
+  const basePointsRef = useRef<Position3D[]>([]);
 
   // ==========================================
   // COMPUTED VALUES
@@ -167,6 +160,7 @@ const SphereImageGrid: React.FC<SphereImageGridProps> = ({
   // ==========================================
   const generateSpherePositions = useCallback((): SphericalPosition[] => {
     const positions: SphericalPosition[] = [];
+    const basePoints: Position3D[] = [];
     const imageCount = images.length;
 
     // Use Fibonacci sphere distribution for even coverage
@@ -191,81 +185,22 @@ const SphereImageGrid: React.FC<SphereImageGridProps> = ({
         phi: phi,
         radius: actualSphereRadius
       });
+
+      // Precompute base XYZ (no rotation) - computed once and reused
+      const thetaRad = SPHERE_MATH.degreesToRadians(theta);
+      const phiRad = SPHERE_MATH.degreesToRadians(phi);
+
+      const x = actualSphereRadius * Math.sin(phiRad) * Math.cos(thetaRad);
+      const y = actualSphereRadius * Math.cos(phiRad);
+      const z = actualSphereRadius * Math.sin(phiRad) * Math.sin(thetaRad);
+
+      basePoints.push({ x, y, z });
     }
 
+    basePointsRef.current = basePoints;
     return positions;
   }, [images.length, actualSphereRadius]);
 
-  const calculateWorldPositions = useCallback((currentRotation: RotationState): WorldPosition[] => {
-    const positions = imagePositions.map((pos, index) => {
-      // Apply rotation using proper 3D rotation matrices
-      const thetaRad = SPHERE_MATH.degreesToRadians(pos.theta);
-      const phiRad = SPHERE_MATH.degreesToRadians(pos.phi);
-      const rotXRad = SPHERE_MATH.degreesToRadians(currentRotation.x);
-      const rotYRad = SPHERE_MATH.degreesToRadians(currentRotation.y);
-
-      // Initial position on sphere
-      let x = pos.radius * Math.sin(phiRad) * Math.cos(thetaRad);
-      let y = pos.radius * Math.cos(phiRad);
-      let z = pos.radius * Math.sin(phiRad) * Math.sin(thetaRad);
-
-      // Apply Y-axis rotation (horizontal drag)
-      const x1 = x * Math.cos(rotYRad) + z * Math.sin(rotYRad);
-      const z1 = -x * Math.sin(rotYRad) + z * Math.cos(rotYRad);
-      x = x1;
-      z = z1;
-
-      // Apply X-axis rotation (vertical drag)
-      const y2 = y * Math.cos(rotXRad) - z * Math.sin(rotXRad);
-      const z2 = y * Math.sin(rotXRad) + z * Math.cos(rotXRad);
-      y = y2;
-      z = z2;
-
-      const worldPos: Position3D = { x, y, z };
-
-      // Calculate visibility with smooth fade zones
-      const fadeZoneStart = -10;  // Start fading out
-      const fadeZoneEnd = -30;    // Completely hidden
-      const isVisible = worldPos.z > fadeZoneEnd;
-
-      // Calculate fade opacity based on Z position
-      let fadeOpacity = 1;
-      if (worldPos.z <= fadeZoneStart) {
-        // Linear fade from 1 to 0 as Z goes from fadeZoneStart to fadeZoneEnd
-        fadeOpacity = Math.max(0, (worldPos.z - fadeZoneEnd) / (fadeZoneStart - fadeZoneEnd));
-      }
-
-      // Check if this image originated from a pole position
-      const isPoleImage = pos.phi < 30 || pos.phi > 150; // Images from extreme angles
-
-      // Calculate distance from center for scaling (in 2D screen space)
-      const distanceFromCenter = Math.sqrt(worldPos.x * worldPos.x + worldPos.y * worldPos.y);
-      const maxDistance = actualSphereRadius;
-      const distanceRatio = Math.min(distanceFromCenter / maxDistance, 1);
-
-      // Scale based on distance from center - be more forgiving for pole images
-      const distancePenalty = isPoleImage ? 0.4 : 0.7; // Less penalty for pole images
-      const centerScale = Math.max(0.3, 1 - distanceRatio * distancePenalty);
-
-      // Also consider Z-depth for additional scaling
-      const depthScale = (worldPos.z + actualSphereRadius) / (2 * actualSphereRadius);
-      const scale = centerScale * Math.max(0.5, 0.8 + depthScale * 0.3);
-
-      return {
-        ...worldPos,
-        scale,
-        zIndex: Math.round(1000 + worldPos.z),
-        isVisible,
-        fadeOpacity,
-        originalIndex: index
-      };
-    });
-
-    // Collision detection disabled for smooth animation - can re-enable later if needed
-    // Running collision detection every frame causes performance issues
-    // If needed, run collision detection only once every N frames using frameCountRef
-    return positions;
-  }, [imagePositions, actualSphereRadius, baseImageSize]);
 
   const clampRotationSpeed = useCallback((speed: number): number => {
     return Math.max(-maxRotationSpeed, Math.min(maxRotationSpeed, speed));
@@ -278,43 +213,86 @@ const SphereImageGrid: React.FC<SphereImageGridProps> = ({
 
   // Direct DOM update function - ONLY GPU-friendly properties (transform, opacity)
   // NO left/top/width/height to avoid layout recalculations
+  // NO per-frame allocations - all math done with local variables
   const updatePositionsInDOM = useCallback(() => {
-    const currentRotation = rotationRef.current;
-    const worldPositions = calculateWorldPositions(currentRotation);
+    const { x: rotXDeg, y: rotYDeg } = rotationRef.current;
 
-    worldPositions.forEach((position, index) => {
+    const rotX = SPHERE_MATH.degreesToRadians(rotXDeg);
+    const rotY = SPHERE_MATH.degreesToRadians(rotYDeg);
+    const cosX = Math.cos(rotX);
+    const sinX = Math.sin(rotX);
+    const cosY = Math.cos(rotY);
+    const sinY = Math.sin(rotY);
+
+    const basePoints = basePointsRef.current;
+    const positions = imagePositions; // for phi to know if it's a pole
+
+    for (let index = 0; index < basePoints.length; index++) {
+      const base = basePoints[index];
+      const posInfo = positions[index];
+
+      let x = base.x;
+      let y = base.y;
+      let z = base.z;
+
+      // Rotate around Y
+      const x1 = x * cosY + z * sinY;
+      const z1 = -x * sinY + z * cosY;
+      x = x1;
+      z = z1;
+
+      // Rotate around X
+      const y2 = y * cosX - z * sinX;
+      const z2 = y * sinX + z * cosX;
+      y = y2;
+      z = z2;
+
       const element = imageElementsRef.current.get(index);
-      if (!element || !position.isVisible) {
-        if (element) element.style.display = 'none';
-        return;
+      if (!element) continue;
+
+      // Visibility / fade
+      const fadeZoneStart = -10;
+      const fadeZoneEnd = -30;
+      const isVisible = z > fadeZoneEnd;
+      if (!isVisible) {
+        element.style.display = 'none';
+        continue;
       }
 
-      // Hover state from ref (no React state)
+      let fadeOpacity = 1;
+      if (z <= fadeZoneStart) {
+        fadeOpacity = Math.max(0, (z - fadeZoneEnd) / (fadeZoneStart - fadeZoneEnd));
+      }
+
+      const isPoleImage = posInfo.phi < 30 || posInfo.phi > 150;
+
+      const distanceFromCenter = Math.sqrt(x * x + y * y);
+      const maxDistance = actualSphereRadius;
+      const distanceRatio = Math.min(distanceFromCenter / maxDistance, 1);
+
+      const distancePenalty = isPoleImage ? 0.4 : 0.7;
+      const centerScale = Math.max(0.3, 1 - distanceRatio * distancePenalty);
+
+      const depthScale = (z + actualSphereRadius) / (2 * actualSphereRadius);
+      const scale = centerScale * Math.max(0.5, 0.8 + depthScale * 0.3);
+
+      // Hover
       const isHovered = hoveredIndexRef.current === index;
-
-      // All nodes keep the same base size; scaling is only via transform
-      const baseScale = position.scale;
       const hoverScale = isHovered ? 1.2 : 1;
-      const finalScale = baseScale * hoverScale;
+      const finalScale = scale * hoverScale;
 
-      // Image loaded?
       const isImageLoaded = loadedImagesRef.current.has(index);
-      const finalOpacity = position.fadeOpacity * (isImageLoaded ? 1 : 0);
+      const finalOpacity = fadeOpacity * (isImageLoaded ? 1 : 0);
 
-      // ONLY touch transform, opacity, zIndex, display - NO layout properties
       element.style.opacity = `${finalOpacity}`;
-      element.style.zIndex = `${position.zIndex}`;
+      element.style.zIndex = `${Math.round(1000 + z)}`;
       element.style.display = 'block';
 
-      // Move relative to center: first translate(-50%, -50%) to center,
-      // then offset by x/y in pixels and scale - ALL in transform (GPU-friendly)
       element.style.transform =
-        `translate3d(-50%, -50%, 0) translate3d(${position.x}px, ${position.y}px, 0) scale(${finalScale})`;
-    });
-  }, [calculateWorldPositions]);
+        `translate3d(-50%, -50%, 0) translate3d(${x}px, ${y}px, 0) scale(${finalScale})`;
+    }
+  }, [imagePositions, actualSphereRadius]);
 
-  const frameCountRef = useRef<number>(0);
-  
   const updateMomentum = useCallback(() => {
     // Check dragging via ref - NO state access
     if (isDraggingRef.current) return;
@@ -554,18 +532,8 @@ const SphereImageGrid: React.FC<SphereImageGridProps> = ({
   // ==========================================
   // RENDER HELPERS
   // ==========================================
-  // Initial world positions for first render only
-  const initialWorldPositions = useMemo(() => calculateWorldPositions(rotationRef.current), [calculateWorldPositions]);
-
   const renderImageNode = useCallback((image: ImageData, index: number) => {
-    // Always render all images - visibility handled by DOM updates
-    const position = initialWorldPositions[index] || { x: 0, y: 0, z: 0, scale: 0.1, zIndex: 0, isVisible: false, fadeOpacity: 0, originalIndex: index };
-    
-    const imageSize = baseImageSize * (position.scale || 0.1);
-    // Check hover via ref - NO state access
-    const isHovered = hoveredIndexRef.current === index;
-    const finalScale = isHovered ? Math.min(1.2, 1.2 / (position.scale || 1)) : 1;
-
+    // Initial positions don't matter - JS loop will position them before they become visible
     return (
       <div
         key={image.id}
@@ -637,7 +605,7 @@ const SphereImageGrid: React.FC<SphereImageGridProps> = ({
         </div>
       </div>
     );
-  }, [initialWorldPositions, baseImageSize, containerSize]);
+  }, [baseImageSize]);
 
   const renderSpotlightModal = () => {
     if (!selectedImage) return null;

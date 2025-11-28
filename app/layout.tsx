@@ -26,8 +26,8 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: "Sri Mayyia Caterers - Premium Fine Dining Experience",
-  description: 'Experience culinary excellence in an atmosphere of refined elegance. Where tradition meets innovation, and every meal is a masterpiece.',
-  keywords: 'fine dining, restaurant, premium cuisine, luxury dining, gourmet food',
+  description: "Experience culinary excellence in an atmosphere of refined elegance. Where tradition meets innovation, and every meal is a masterpiece.",
+  keywords: "fine dining, restaurant, premium cuisine, luxury dining, gourmet food",
 }
 
 export default function RootLayout({
