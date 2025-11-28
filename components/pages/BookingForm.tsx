@@ -1,0 +1,219 @@
+'use client'
+
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { FiClock, FiCalendar, FiUsers, FiMail, FiPhone } from 'react-icons/fi'
+
+export default function BookingForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    date: '',
+    time: '',
+    guests: '2',
+    eventType: 'table',
+    message: '',
+  })
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    console.log('Form submitted:', formData)
+    alert('Thank you for your booking request! We will contact you soon.')
+  }
+
+  return (
+    <section className="section-padding bg-dark-900">
+      <div className="container-custom max-w-4xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="premium-card"
+        >
+          <div className="text-center mb-12">
+            <div className="section-subtitle mb-4">Reservations</div>
+            <h2 className="text-4xl md:text-5xl font-playfair font-bold text-white mb-4">
+              Reserve Your <span className="gradient-text">Table</span>
+            </h2>
+            <p className="text-gray-400 text-lg">
+              Fill out the form below and we'll get back to you to confirm your booking.
+            </p>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Event Type */}
+            <div>
+              <label className="block text-sm font-semibold text-white mb-4">
+                Reservation Type
+              </label>
+              <div className="grid grid-cols-2 gap-4">
+                <motion.button
+                  type="button"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => setFormData({ ...formData, eventType: 'table' })}
+                  className={`py-4 px-6 rounded-lg border-2 transition-all duration-300 ${
+                    formData.eventType === 'table'
+                      ? 'border-gold-400 bg-gold-400/10 text-gold-400 glow-gold'
+                      : 'glass border-gold-400/20 text-white hover:border-gold-400/40'
+                  }`}
+                >
+                  Book a Table
+                </motion.button>
+                <motion.button
+                  type="button"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => setFormData({ ...formData, eventType: 'event' })}
+                  className={`py-4 px-6 rounded-lg border-2 transition-all duration-300 ${
+                    formData.eventType === 'event'
+                      ? 'border-gold-400 bg-gold-400/10 text-gold-400 glow-gold'
+                      : 'glass border-gold-400/20 text-white hover:border-gold-400/40'
+                  }`}
+                >
+                  Private Event
+                </motion.button>
+              </div>
+            </div>
+
+            {/* Name */}
+            <div>
+              <label className="block text-sm font-semibold text-white mb-2">
+                Full Name *
+              </label>
+              <input
+                type="text"
+                required
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className="w-full px-4 py-3 glass border border-gold-400/20 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-gold-400 text-white placeholder-gray-500 bg-transparent"
+                placeholder="Enter your full name"
+              />
+            </div>
+
+            {/* Email and Phone */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-semibold text-white mb-2">
+                  Email *
+                </label>
+                <div className="relative">
+                  <FiMail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gold-400" />
+                  <input
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full pl-12 pr-4 py-3 glass border border-gold-400/20 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-gold-400 text-white placeholder-gray-500 bg-transparent"
+                    placeholder="your@email.com"
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-white mb-2">
+                  Phone *
+                </label>
+                <div className="relative">
+                  <FiPhone className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gold-400" />
+                  <input
+                    type="tel"
+                    required
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full pl-12 pr-4 py-3 glass border border-gold-400/20 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-gold-400 text-white placeholder-gray-500 bg-transparent"
+                    placeholder="+1 (234) 567-890"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Date, Time, Guests */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div>
+                <label className="block text-sm font-semibold text-white mb-2">
+                  Date *
+                </label>
+                <div className="relative">
+                  <FiCalendar className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gold-400" />
+                  <input
+                    type="date"
+                    required
+                    value={formData.date}
+                    onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                    className="w-full pl-12 pr-4 py-3 glass border border-gold-400/20 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-gold-400 text-white bg-transparent"
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-white mb-2">
+                  Time *
+                </label>
+                <div className="relative">
+                  <FiClock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gold-400" />
+                  <input
+                    type="time"
+                    required
+                    value={formData.time}
+                    onChange={(e) => setFormData({ ...formData, time: e.target.value })}
+                    className="w-full pl-12 pr-4 py-3 glass border border-gold-400/20 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-gold-400 text-white bg-transparent"
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-white mb-2">
+                  Guests *
+                </label>
+                <div className="relative">
+                  <FiUsers className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gold-400" />
+                  <select
+                    required
+                    value={formData.guests}
+                    onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
+                    className="w-full pl-12 pr-4 py-3 glass border border-gold-400/20 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-gold-400 text-white bg-transparent"
+                  >
+                    <option value="1">1 Person</option>
+                    <option value="2">2 People</option>
+                    <option value="3">3 People</option>
+                    <option value="4">4 People</option>
+                    <option value="5">5 People</option>
+                    <option value="6">6 People</option>
+                    <option value="7+">7+ People</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            {/* Message */}
+            <div>
+              <label className="block text-sm font-semibold text-white mb-2">
+                Special Requests
+              </label>
+              <textarea
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                rows={4}
+                className="w-full px-4 py-3 glass border border-gold-400/20 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-gold-400 text-white placeholder-gray-500 bg-transparent"
+                placeholder="Any special dietary requirements or requests..."
+              />
+            </div>
+
+            {/* Submit Button */}
+            <motion.button
+              type="submit"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="btn-primary w-full text-lg"
+            >
+              Submit Reservation
+            </motion.button>
+
+            <p className="text-sm text-gray-400 text-center">
+              We'll contact you within 24 hours to confirm your reservation.
+            </p>
+          </form>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
