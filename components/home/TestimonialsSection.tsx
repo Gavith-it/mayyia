@@ -5,21 +5,21 @@ import { FiStar } from 'react-icons/fi'
 
 const testimonials = [
   {
-    name: 'Sarah Johnson',
-    role: 'Food Critic',
-    content: 'An extraordinary culinary journey. Every dish was a masterpiece, and the service was impeccable. Sri Mayyia Caterers sets the standard for fine dining.',
+    name: 'Aishwarya K.',
+    role: 'Bengaluru',
+    content: 'Sri Mayyia did not just cater our wedding—they elevated it. From the tasting to the service, everything was precise, poised, and unforgettable.',
     rating: 5,
   },
   {
-    name: 'Michael Chen',
-    role: 'Restaurant Owner',
-    content: 'The attention to detail is remarkable. From the ambiance to the presentation, everything exudes luxury and sophistication.',
+    name: 'Raghavan Family',
+    role: 'Sringeri',
+    content: 'When we hosted a pooja for over 3000 people, Sri Mayyia delivered with such spiritual sanctity and systemised perfection that even the priests were in awe.',
     rating: 5,
   },
   {
-    name: 'Emily Rodriguez',
-    role: 'Celebrity Chef',
-    content: 'A perfect blend of tradition and innovation. The flavors are bold yet refined, creating an unforgettable dining experience.',
+    name: 'Lakshmi Narayan',
+    role: 'Hyderabad',
+    content: 'A rare blend of old-world charm and new-world precision. We wouldn\'t trust anyone else with our family functions.',
     rating: 5,
   },
 ]
@@ -35,12 +35,12 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.8 }}
           className="section-title mb-16"
         >
-          <div className="section-subtitle">Testimonials</div>
+          <div className="section-subtitle">Client Experiences</div>
           <h2 className="section-heading">
-            What Our <span className="gradient-text">Guests Say</span>
+            What Our <span className="gradient-text">Clients Say</span>
           </h2>
           <p className="section-description">
-            Don't just take our word for it. Hear from our valued guests about their experiences.
+            Our clients don't just book us for events. They bring us in to safeguard their most meaningful milestones.
           </p>
         </motion.div>
 

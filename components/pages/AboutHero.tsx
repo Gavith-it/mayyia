@@ -22,12 +22,12 @@ export default function AboutHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="section-subtitle mb-4">Our Story</div>
+          <div className="section-subtitle mb-4">Our Legacy</div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-playfair font-bold text-white mb-6">
             About <span className="gradient-text">Sri Mayyia</span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            A legacy of culinary excellence spanning over three decades
+            For over six decades, a benchmark in premium vegetarian catering. Rooted in tradition, redefined through generations.
           </p>
         </motion.div>
       </div>

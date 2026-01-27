@@ -5,10 +5,10 @@ import { useInView } from 'react-intersection-observer'
 import { FiUsers, FiCalendar, FiAward, FiHeart } from 'react-icons/fi'
 
 const stats = [
-  { icon: FiUsers, value: '50K+', label: 'Happy Guests', color: 'from-gold-400 to-gold-500' },
-  { icon: FiCalendar, value: '30+', label: 'Years Experience', color: 'from-gold-500 to-gold-600' },
-  { icon: FiAward, value: '15+', label: 'Awards Won', color: 'from-gold-400 to-gold-500' },
-  { icon: FiHeart, value: '98%', label: 'Satisfaction Rate', color: 'from-gold-500 to-gold-600' },
+  { icon: FiUsers, value: '10K+', label: 'Events Catered', color: 'from-gold-400 to-gold-500' },
+  { icon: FiCalendar, value: '60+', label: 'Years of Legacy', color: 'from-gold-500 to-gold-600' },
+  { icon: FiAward, value: '50-10K', label: 'Guests Per Event', color: 'from-gold-400 to-gold-500' },
+  { icon: FiHeart, value: '3', label: 'Generations of Excellence', color: 'from-gold-500 to-gold-600' },
 ]
 
 export default function StatsSection() {

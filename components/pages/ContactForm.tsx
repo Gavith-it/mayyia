@@ -36,11 +36,11 @@ export default function ContactForm() {
                 <FiMapPin className="w-7 h-7 text-dark-900" />
               </div>
               <h3 className="text-xl font-playfair font-semibold text-white mb-2">
-                Address
+                Office
               </h3>
               <p className="text-gray-400">
-                123 Premium Avenue,<br />
-                Luxury District, City 12345
+                Bengaluru, Karnataka<br />
+                Service Radius: Pan-South India and Select Destination Cities
               </p>
             </motion.div>
 
@@ -57,9 +57,9 @@ export default function ContactForm() {
               <h3 className="text-xl font-playfair font-semibold text-white mb-2">
                 Phone
               </h3>
-              <a href="tel:+1234567890" className="text-gold-400 hover:text-gold-300 transition-colors">
-                +1 (234) 567-890
-              </a>
+              <p className="text-gray-400">
+                Contact us for details
+              </p>
             </motion.div>
 
             <motion.div
@@ -75,9 +75,9 @@ export default function ContactForm() {
               <h3 className="text-xl font-playfair font-semibold text-white mb-2">
                 Email
               </h3>
-              <a href="mailto:info@earlsrestaurant.com" className="text-gold-400 hover:text-gold-300 transition-colors">
-                info@srimayyia.com
-              </a>
+              <p className="text-gray-400">
+                Contact us for details
+              </p>
             </motion.div>
 
             <motion.div
@@ -91,11 +91,10 @@ export default function ContactForm() {
                 <FiClock className="w-7 h-7 text-dark-900" />
               </div>
               <h3 className="text-xl font-playfair font-semibold text-white mb-2">
-                Opening Hours
+                Schedule a Menu Consultation
               </h3>
               <p className="text-gray-400">
-                Monday - Friday: 6:00 PM - 11:00 PM<br />
-                Saturday - Sunday: 5:00 PM - 12:00 AM
+                Our culinary consultants will guide you through the process—understanding your needs, curating your menu, and ensuring your event is remembered for its taste and thoughtfulness.
               </p>
             </motion.div>
           </div>
@@ -110,7 +109,7 @@ export default function ContactForm() {
               className="premium-card"
             >
               <h2 className="text-3xl font-playfair font-bold text-white mb-8">
-                Send us a <span className="gradient-text">Message</span>
+                Connect <span className="gradient-text">With Us</span>
               </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

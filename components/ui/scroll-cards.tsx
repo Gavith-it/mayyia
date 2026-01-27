@@ -34,33 +34,51 @@ const Card: FC<iCardProps> = ({
 			style={{ zIndex: i + 1 }}
 		>
 			<div
-				className="relative flex flex-col h-[300px] w-[700px] py-12 px-10 md:px-12
-				rotate-0 md:h-[400px] md:w-[600px] items-center justify-center mx-auto 
-				shadow-2xl pr-3 pl-3 pt-3 pb-4 rounded-xl overflow-hidden"
-				style={{ backgroundColor: color }}
+				className="relative flex flex-col md:flex-row h-[600px] w-full max-w-[900px] md:h-[500px] 
+				items-stretch mx-auto shadow-2xl rounded-xl overflow-hidden"
 			>
-				<span className="font-bold relative text-5xl md:text-7xl mt-5 z-10">
-					<span
-						className="relative z-10 font-playfair font-black tracking-tight"
-						style={{ color: textColor }}
-					>
-						{title}
-					</span>
-				</span>
-				<div
-					className="font-montserrat text-lg md:text-2xl font-medium text-center mb-0 z-50 mt-2 lowercase tracking-wide"
-					style={{ lineHeight: 1.4, color: textColor }}
-				>
-					{description}
-				</div>
-				<div className="absolute inset-0 z-0">
+				{/* Left Side - Image (50%) */}
+				<div className="relative w-full md:w-1/2 h-[300px] md:h-full overflow-hidden" style={{ backgroundColor: '#000000' }}>
 					<Image
-						className="w-full h-full object-cover opacity-30"
+						className="w-full h-full object-cover"
 						src={src}
-						alt="Background"
+						alt={title}
 						fill
-						sizes="(max-width: 768px) 700px, 600px"
+						sizes="(max-width: 768px) 100vw, 450px"
+						priority={i === 0}
 					/>
+					{/* Radial gradient overlay - keeps center subject visible, makes edges pure black */}
+					<div 
+						className="absolute inset-0"
+						style={{ 
+							backgroundColor: '#000000',
+							maskImage: 'radial-gradient(ellipse 70% 70% at center, transparent 50%, black 80%)',
+							WebkitMaskImage: 'radial-gradient(ellipse 70% 70% at center, transparent 50%, black 80%)'
+						}} 
+					/>
+				</div>
+
+				{/* Right Side - Text Content (50%) */}
+				<div
+					className="relative w-full md:w-1/2 flex flex-col items-center justify-center 
+					py-12 px-8 md:px-12"
+					style={{ backgroundColor: '#000000' }}
+				>
+					<span className="font-bold relative text-4xl md:text-6xl mb-4">
+						<span
+							className="relative font-playfair font-black tracking-tight text-center block"
+							style={{ color: textColor }}
+						>
+							{title}
+						</span>
+					</span>
+					<div
+						className="font-montserrat text-base md:text-xl font-medium text-center 
+						lowercase tracking-wide max-w-md"
+						style={{ lineHeight: 1.5, color: textColor }}
+					>
+						{description}
+					</div>
 				</div>
 			</div>
 		</div>

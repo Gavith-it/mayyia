@@ -15,10 +15,10 @@ export default function Footer() {
       { href: '/gallery', label: 'Gallery' },
     ],
     services: [
-      { label: 'Fine Dining' },
-      { label: 'Private Events' },
-      { label: 'Catering' },
-      { label: 'Wine Pairing' },
+      { label: 'Signature South Indian Catering' },
+      { label: 'Luxury Event Catering' },
+      { label: 'Thematic & Ritual-Based Menus' },
+      { label: 'Large-Scale Events' },
     ],
   }
 
@@ -50,8 +50,7 @@ export default function Footer() {
               Sri Mayyia <span className="font-playfair text-2xl">Caterers</span>
             </h3>
             <p className="text-gray-400 mb-6 leading-relaxed">
-              Experience culinary excellence in an atmosphere of refined elegance. 
-              Where tradition meets innovation, and every meal is a masterpiece.
+              Serving Culture. Preserving Legacy. Perfecting Hospitality.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
@@ -124,21 +123,21 @@ export default function Footer() {
               <li className="flex items-start space-x-3">
                 <FiMapPin className="w-5 h-5 text-gold-400 mt-1 flex-shrink-0" />
                 <span className="text-gray-400">
-                  123 Premium Avenue,<br />
-                  Luxury District, City 12345
+                  Office: Bengaluru<br />
+                  Service Radius: Pan-South India
                 </span>
               </li>
               <li className="flex items-center space-x-3">
                 <FiPhone className="w-5 h-5 text-gold-400 flex-shrink-0" />
-                <a href="tel:+1234567890" className="text-gray-400 hover:text-gold-400 transition-colors">
-                  +1 (234) 567-890
-                </a>
+                <span className="text-gray-400">
+                  Contact us for details
+                </span>
               </li>
               <li className="flex items-center space-x-3">
                 <FiMail className="w-5 h-5 text-gold-400 flex-shrink-0" />
-                <a href="mailto:info@earlsrestaurant.com" className="text-gray-400 hover:text-gold-400 transition-colors">
-                  info@srimayyia.com
-                </a>
+                <span className="text-gray-400">
+                  Contact us for details
+                </span>
               </li>
             </ul>
           </motion.div>

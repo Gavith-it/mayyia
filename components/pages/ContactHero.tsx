@@ -22,12 +22,12 @@ export default function ContactHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="section-subtitle mb-4">Contact</div>
+          <div className="section-subtitle mb-4">Contact Us</div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-playfair font-bold text-white mb-6">
-            Get In <span className="gradient-text">Touch</span>
+            Let's Create Something <span className="gradient-text">Memorable</span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            We'd love to hear from you
+            Whether you're planning a wedding, a sacred ritual, or a private celebration, we'd be honoured to be part of your journey.
           </p>
         </motion.div>
       </div>

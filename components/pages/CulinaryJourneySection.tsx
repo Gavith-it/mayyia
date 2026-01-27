@@ -21,17 +21,55 @@ export default function CulinaryJourneySection() {
 						transition={{ duration: 0.8 }}
 						className="space-y-6"
 					>
-						<div className="section-subtitle">Culinary Journey</div>
-						<h2 className="text-4xl md:text-5xl lg:text-6xl font-playfair font-bold text-white leading-tight">
-							Satisfying your taste, creating{' '}
-							<span className="gradient-text">memories</span> one bite at a time
-						</h2>
-						<p className="text-lg text-gray-300 leading-relaxed">
-							For over three decades, Sri Mayyia Caterers has been a beacon of culinary excellence, blending traditional techniques with innovative flavors to create unforgettable dining experiences.
-						</p>
-						<p className="text-gray-400 leading-relaxed">
-							Our master chefs, trained in the finest culinary traditions, craft each dish with meticulous attention to detail. We source only the finest ingredients from trusted local and international suppliers.
-						</p>
+					<div className="section-subtitle">Our Process</div>
+					<h2 className="text-4xl md:text-5xl lg:text-6xl font-playfair font-bold text-white leading-tight">
+						Discipline is Our{' '}
+						<span className="gradient-text">Signature Ingredient</span>
+					</h2>
+					<p className="text-lg text-gray-300 leading-relaxed mb-6">
+						From the first enquiry to the final plate served, our process is built on structure, transparency, and zero compromise.
+					</p>
+					<div className="space-y-6">
+						<div className="premium-card">
+							<h3 className="text-xl font-playfair text-white mb-2 flex items-center">
+								<span className="w-8 h-8 rounded-full bg-gradient-to-br from-gold-400 to-gold-500 flex items-center justify-center text-dark-900 font-bold mr-3">1</span>
+								Personalised Consultation
+							</h3>
+							<p className="text-gray-400 text-sm leading-relaxed ml-11">
+								Every menu begins with a conversation—about your event, your culture, and your guests.
+							</p>
+						</div>
+						<div className="premium-card">
+							<h3 className="text-xl font-playfair text-white mb-2 flex items-center">
+								<span className="w-8 h-8 rounded-full bg-gradient-to-br from-gold-400 to-gold-500 flex items-center justify-center text-dark-900 font-bold mr-3">2</span>
+								Tailored Menu Design
+							</h3>
+							<p className="text-gray-400 text-sm leading-relaxed ml-11">
+								From flavour palettes to plating styles, everything is customised.
+							</p>
+						</div>
+						<div className="premium-card">
+							<h3 className="text-xl font-playfair text-white mb-2 flex items-center">
+								<span className="w-8 h-8 rounded-full bg-gradient-to-br from-gold-400 to-gold-500 flex items-center justify-center text-dark-900 font-bold mr-3">3</span>
+								Centralised Culinary Execution
+							</h3>
+							<p className="text-gray-400 text-sm leading-relaxed ml-11">
+								Our kitchens operate at scale but never lose sight of precision.
+							</p>
+						</div>
+						<div className="premium-card">
+							<h3 className="text-xl font-playfair text-white mb-2 flex items-center">
+								<span className="w-8 h-8 rounded-full bg-gradient-to-br from-gold-400 to-gold-500 flex items-center justify-center text-dark-900 font-bold mr-3">4</span>
+								On-Ground Perfection
+							</h3>
+							<p className="text-gray-400 text-sm leading-relaxed ml-11">
+								From logistics to service teams, our event-day execution is seamless.
+							</p>
+						</div>
+					</div>
+					<p className="text-gold-400 font-semibold mt-6 text-center">
+						We don't outsource quality. We engineer it.
+					</p>
 					</motion.div>
 
 					{/* Image */}

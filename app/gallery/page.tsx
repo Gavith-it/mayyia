@@ -4,7 +4,7 @@ import GalleryGrid from '@/components/pages/GalleryGrid'
 
 export const metadata: Metadata = {
   title: "Gallery - Sri Mayyia Caterers",
-  description: 'View our restaurant ambiance, dishes, and special events.',
+  description: 'Elegance, Captured. Excellence, Framed. View our catering services, events, and culinary presentations.',
 }
 
 export default function GalleryPage() {

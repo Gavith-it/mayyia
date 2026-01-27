@@ -5,48 +5,43 @@ import { CardsParallax, type iCardItem } from '@/components/ui/scroll-cards'
 
 const signatureDishes: iCardItem[] = [
 	{
-		title: 'Truffle Risotto',
-		description: 'Creamy arborio rice with black truffle and parmesan, a timeless classic',
-		tag: 'signature',
+		title: 'Signature South Indian Catering',
+		description:
+			'Traditional South Indian vegetarian cuisine that honours culinary authenticity, from temple-style prasadam to elaborate wedding banquets.',
+		tag: 'service',
 		src: '/images/anil-sharma-DKnqF7U2Aus-unsplash.jpg',
-		link: '/menu',
+		link: '/about',
 		color: '#0a0a0a',
 		textColor: '#f4d03f',
 	},
 	{
-		title: 'Wagyu Steak',
-		description: 'Premium A5 wagyu with seasonal vegetables, perfectly seared to perfection',
-		tag: 'signature',
+		title: 'Luxury Event Catering',
+		description:
+			'Multi-cuisine vegetarian menus and impeccably trained hospitality teams for elite private, wedding, and corporate gatherings.',
+		tag: 'service',
 		src: '/images/anil-sharma-fImNmaN73zo-unsplash.jpg',
-		link: '/menu',
+		link: '/about',
 		color: '#1a1a1a',
-		textColor: '#ffffff',
+		textColor: '#f4d03f',
 	},
 	{
-		title: 'Lobster Thermidor',
-		description: 'Fresh lobster in creamy cognac sauce, a French culinary masterpiece',
-		tag: 'signature',
+		title: 'Thematic & Ritual-Based Menus',
+		description:
+			'Menus designed with religious advisors to honour rituals, fasting guidelines, and ceremonial customs for every auspicious occasion.',
+		tag: 'service',
 		src: '/images/anil-sharma-oNXMhtKKFec-unsplash.jpg',
-		link: '/menu',
+		link: '/about',
 		color: '#0a0a0a',
 		textColor: '#f4d03f',
 	},
 	{
-		title: 'Chocolate Soufflé',
-		description: 'Warm chocolate soufflé with vanilla ice cream, a sweet finale',
-		tag: 'signature',
+		title: 'Temple & Community Annadanam',
+		description:
+			'Disciplined, sanctified large-scale service for temple annadanams and community feeding across South India.',
+		tag: 'service',
 		src: '/images/anil-sharma-ynt5uoi4bTE-unsplash.jpg',
-		link: '/menu',
+		link: '/about',
 		color: '#1a1a1a',
-		textColor: '#ffffff',
-	},
-	{
-		title: 'Seafood Platter',
-		description: 'An exquisite selection of fresh seafood, prepared with Mediterranean flair',
-		tag: 'signature',
-		src: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80',
-		link: '/menu',
-		color: '#0a0a0a',
 		textColor: '#f4d03f',
 	},
 ]
@@ -62,12 +57,13 @@ export default function SignatureSection() {
 					transition={{ duration: 0.8 }}
 					className="section-title mb-16"
 				>
-					<div className="section-subtitle">Signature</div>
+					<div className="section-subtitle">What We Offer</div>
 					<h2 className="section-heading">
-						Chef's <span className="gradient-text">Specialties</span>
+						Curated <span className="gradient-text">Catering Experiences</span>
 					</h2>
 					<p className="section-description">
-						Experience our master chef's most celebrated creations, each dish a testament to culinary artistry.
+						From sacred rituals to luxury weddings and corporate galas, Sri Mayyia crafts vegetarian catering
+						experiences that are rooted in culture and executed with uncompromising precision.
 					</p>
 				</motion.div>
 			</div>

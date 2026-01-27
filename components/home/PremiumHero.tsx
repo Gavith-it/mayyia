@@ -168,7 +168,7 @@ export default function PremiumHero() {
           className="mb-4"
         >
           <span className="text-gold-400 font-montserrat text-xs md:text-sm uppercase tracking-[0.3em] font-light">
-            Welcome To
+            Culinary Heritage. Precision Hospitality. Celebrations That Endure.
           </span>
         </motion.div>
 
@@ -202,8 +202,9 @@ export default function PremiumHero() {
           transition={{ duration: 0.8, delay: 1 }}
           className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 font-montserrat font-light leading-relaxed"
         >
-          Where culinary artistry meets timeless elegance. Experience a symphony of flavors 
-          crafted by master chefs in an atmosphere of refined luxury.
+          For over six decades, Sri Mayyia Caterers has stood as a benchmark in the art of
+          premium vegetarian catering. Rooted in tradition and redefined through generations,
+          we craft gastronomic journeys for those who value excellence, integrity, and cultural depth.
         </motion.p>
 
         <motion.div
@@ -220,7 +221,7 @@ export default function PremiumHero() {
             transition={{ delay: 1.4 }}
           >
             <Link href="/booking" className="btn-primary">
-              Reserve Table
+              Schedule Consultation
             </Link>
           </motion.div>
           <motion.div

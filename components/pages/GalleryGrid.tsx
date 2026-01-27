@@ -30,6 +30,42 @@ export default function GalleryGrid() {
   return (
     <section className="section-padding bg-dark-900">
       <div className="container-custom">
+        {/* Gallery Description */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-12"
+        >
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-6 leading-relaxed">
+            Our work is best experienced in person—but here is a glimpse of what we deliver.
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            {[
+              'Lavish wedding spreads with silver service',
+              'Sacred setups for rituals and poojas',
+              'Live counters curated for culinary theatre',
+              'Signature plating and presentation across cuisines',
+              'Behind-the-scenes discipline of our kitchen and crew',
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="premium-card text-center"
+              >
+                <p className="text-gray-300 text-sm">{item}</p>
+              </motion.div>
+            ))}
+          </div>
+          <p className="text-gold-400 font-semibold text-lg italic">
+            This is not food photography. This is visual testimony.
+          </p>
+        </motion.div>
+
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-4 mb-16">
           {categories.map((category) => (

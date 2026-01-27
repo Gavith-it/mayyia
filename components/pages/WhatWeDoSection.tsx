@@ -56,17 +56,34 @@ export default function WhatWeDoSection() {
 						transition={{ duration: 0.8 }}
 						className="space-y-6"
 					>
-						<div className="section-subtitle">What we Do</div>
-						<h2 className="text-4xl md:text-5xl lg:text-6xl font-playfair font-bold text-white leading-tight">
-							We craft and preserve beautiful, enduring{' '}
-							<span className="gradient-text">experiences</span>
-						</h2>
-						<p className="text-lg text-gray-300 leading-relaxed">
-							Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. Wiusmod tempor incididunt.
-						</p>
-						<p className="text-gray-400 leading-relaxed">
-							Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Sed ut perspiciatis unde omnis iste natus error sit voluptatem.
-						</p>
+					<div className="section-subtitle">What We Offer</div>
+					<h2 className="text-4xl md:text-5xl lg:text-6xl font-playfair font-bold text-white leading-tight">
+						Curated Catering{' '}
+						<span className="gradient-text">Experiences</span>
+					</h2>
+					<p className="text-lg text-gray-300 leading-relaxed">
+						We specialize in traditional South Indian vegetarian cuisine that honours culinary authenticity. From temple-style prasadam to elaborate wedding banquets, our preparations are rooted in time-honoured techniques, prepared in sanctified kitchens, and served with devotion.
+					</p>
+					<div className="space-y-4 mt-6">
+						<div className="premium-card">
+							<h3 className="text-xl font-playfair text-white mb-2">Signature South Indian Catering</h3>
+							<p className="text-gray-400 text-sm leading-relaxed">
+								Customizable menus for each region and community tradition • Authentic temple-inspired preparations • Sacred cooking processes with utmost hygiene standards • Traditional service formats including banana-leaf and brassware plating
+							</p>
+						</div>
+						<div className="premium-card">
+							<h3 className="text-xl font-playfair text-white mb-2">Luxury Event Catering</h3>
+							<p className="text-gray-400 text-sm leading-relaxed">
+								Multi-cuisine vegetarian menus (Indian, Continental, Asian, Fusion) • Live stations with gourmet supervision • Curated ingredient sourcing (organic, region-specific, seasonal) • Impeccable hospitality staffing trained for premium events
+							</p>
+						</div>
+						<div className="premium-card">
+							<h3 className="text-xl font-playfair text-white mb-2">Thematic and Ritual-Based Menus</h3>
+							<p className="text-gray-400 text-sm leading-relaxed">
+								Menus designed with families and religious advisors to align with ritualistic requirements, fasting guidelines, and ceremonial customs. We serve Seemantham, Upanayanam, Griha Pravesham, Shubha Muhurthams, Temple Annadanams, and Community Feeding.
+							</p>
+						</div>
+					</div>
 					</motion.div>
 				</div>
 			</div>

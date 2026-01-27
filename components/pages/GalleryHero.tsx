@@ -22,12 +22,12 @@ export default function GalleryHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="section-subtitle mb-4">Gallery</div>
+          <div className="section-subtitle mb-4">Photos & Videos</div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-playfair font-bold text-white mb-6">
-            Visual <span className="gradient-text">Experience</span>
+            Elegance, <span className="gradient-text">Captured</span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Step into our world of culinary artistry
+            Excellence, Framed. Our work is best experienced in person—but here is a glimpse of what we deliver.
           </p>
         </motion.div>
       </div>

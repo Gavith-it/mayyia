@@ -277,8 +277,9 @@ export default function AboutSection() {
               transition={{ delay: 0.3 }}
               className="text-gray-300 text-lg leading-relaxed"
             >
-              For over three decades, Sri Mayyia Caterers has been a beacon of culinary excellence, 
-              blending traditional techniques with innovative flavors to create unforgettable dining experiences.
+              For over six decades, Sri Mayyia Caterers has stood as a benchmark in the art of premium
+              vegetarian catering. Rooted in tradition and redefined through generations, we serve more
+              than just meals—we craft gastronomic journeys.
             </motion.p>
 
             <motion.p
@@ -287,8 +288,9 @@ export default function AboutSection() {
               transition={{ delay: 0.4 }}
               className="text-gray-400 leading-relaxed"
             >
-              Our master chefs, trained in the finest culinary traditions, craft each dish with meticulous attention to detail.
-              We source only the finest ingredients from trusted local and international suppliers.
+              Founded by Sri. K Ramakrishna Mayyia with a singular vision—to elevate the act of feeding
+              into an offering of love, devotion, and discipline—our legacy is built on purity, process,
+              and hospitality that transforms events into enduring memories.
             </motion.p>
 
             <motion.div
@@ -298,8 +300,8 @@ export default function AboutSection() {
               className="grid grid-cols-2 gap-6 pt-6"
             >
               <motion.div whileHover={{ scale: 1.05, y: -5 }} className="premium-card">
-                <div className="text-4xl font-playfair font-bold gradient-text mb-2">30+</div>
-                <div className="text-gray-400">Years of Excellence</div>
+                <div className="text-4xl font-playfair font-bold gradient-text mb-2">60+</div>
+                <div className="text-gray-400">Years of Culinary Heritage</div>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05, y: -5 }} className="premium-card">
                 <div className="text-4xl font-playfair font-bold gradient-text mb-2">50K+</div>

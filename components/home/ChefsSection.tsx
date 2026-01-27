@@ -2,27 +2,23 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import Image from 'next/image'
 import { FiArrowRight } from 'react-icons/fi'
 
 const chefs = [
   {
-    name: 'Chef Marcus Thompson',
-    role: 'Executive Chef',
-    bio: 'Award-winning chef with 20+ years of experience',
-    image: '/images/jarren-rocks-nVFp3nTWAbA-unsplash.jpg',
+    name: 'Sri K Ramakrishna Mayyia',
+    role: 'Founder',
+    bio: 'A culinary pioneer whose devotion to purity, process, and hospitality transformed feeding into an offering of love and discipline.',
   },
   {
-    name: 'Chef Elena Martinez',
-    role: 'Pastry Chef',
-    bio: 'Master of French patisserie and modern desserts',
-    image: '/images/alexandra-bellanger-dHeKcZ0a-xY-unsplash.jpg',
+    name: 'Sri KR Ananth Mayyia',
+    role: 'Custodian of Scale & Structure',
+    bio: 'The architect of operational excellence who scaled Sri Mayyia into a regional powerhouse with immaculate logistics and service integrity.',
   },
   {
-    name: 'Chef James Wilson',
-    role: 'Sous Chef',
-    bio: 'Specialist in Asian fusion and molecular gastronomy',
-    image: '/images/darko-trajkovic-Kh6iEyCS-Mg-unsplash.jpg',
+    name: 'Mr. Akash Mayyia',
+    role: 'Visionary of the New Era',
+    bio: 'A third-generation leader blending old-world grace with new-age innovation, curated menus, and a seamless digital-first experience.',
   },
 ]
 
@@ -37,12 +33,12 @@ export default function ChefsSection() {
           transition={{ duration: 0.8 }}
           className="section-title mb-16"
         >
-          <div className="section-subtitle">Our Team</div>
+          <div className="section-subtitle">Leadership</div>
           <h2 className="section-heading">
-            Master <span className="gradient-text">Chefs</span>
+            Pillars of <span className="gradient-text">Progress</span>
           </h2>
           <p className="section-description">
-            Meet the culinary artists behind every exceptional dish.
+            Three generations of visionaries who transformed a humble service into one of India’s most trusted vegetarian catering institutions.
           </p>
         </motion.div>
 
@@ -58,20 +54,6 @@ export default function ChefsSection() {
               className="group"
             >
               <div className="premium-card text-center">
-                <motion.div
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.5 }}
-                  className="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden"
-                >
-                  <Image
-                    src={chef.image}
-                    alt={chef.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </motion.div>
                 <h3 className="text-2xl font-playfair text-white mb-2">{chef.name}</h3>
                 <div className="text-gold-400 font-semibold mb-3">{chef.role}</div>
                 <p className="text-gray-400">{chef.bio}</p>
@@ -88,8 +70,8 @@ export default function ChefsSection() {
           className="text-center"
         >
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Link href="/chefs" className="btn-secondary inline-flex items-center">
-              Meet All Chefs <FiArrowRight className="ml-2" />
+            <Link href="/about" className="btn-secondary inline-flex items-center">
+              Discover Our Legacy <FiArrowRight className="ml-2" />
             </Link>
           </motion.div>
         </motion.div>
