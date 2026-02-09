@@ -2,10 +2,11 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { IMAGE_ASSETS } from '@/lib/image-assets'
 
 export default function LegacySection() {
 	return (
-		<section className="section-padding bg-gradient-to-b from-dark-900 via-dark-800 to-dark-900">
+		<section className="section-padding bg-beige">
 			<div className="container-custom">
 				<motion.div
 					initial={{ opacity: 0, y: 30 }}
@@ -15,10 +16,10 @@ export default function LegacySection() {
 					className="text-center mb-16"
 				>
 					<div className="section-subtitle mb-4">Our Legacy</div>
-					<h2 className="text-4xl md:text-5xl font-playfair font-bold text-white mb-6">
+					<h2 className="section-heading-light">
 						The Origin of Purity and <span className="gradient-text">Purpose</span>
 					</h2>
-					<p className="text-lg text-gray-300 max-w-4xl mx-auto leading-relaxed">
+					<p className="section-description-light max-w-4xl mx-auto">
 						Sri Mayyia Caterers was founded with a singular vision—to elevate the act of feeding into an offering of love, devotion, and discipline. This vision took shape in the hands of Sri. K Ramakrishna Mayyia, a culinary pioneer whose devotion to purity, process, and hospitality laid the foundation for what would become one of India's most revered catering institutions.
 					</p>
 				</motion.div>
@@ -31,7 +32,7 @@ export default function LegacySection() {
 						transition={{ duration: 0.8 }}
 						className="space-y-6"
 					>
-						<p className="text-gray-300 leading-relaxed">
+						<p className="text-muted leading-relaxed">
 							His meticulous attention to ritualistic precision and service integrity earned him not just clients—but lifelong relationships. What began as a service to temples and small community gatherings is today a name trusted across cities and generations for hosting thousands with unparalleled grace and grandeur.
 						</p>
 					</motion.div>
@@ -43,7 +44,7 @@ export default function LegacySection() {
 						className="relative h-[400px] rounded-xl overflow-hidden"
 					>
 						<Image
-							src="/images/anil-sharma-oNXMhtKKFec-unsplash.jpg"
+							src={IMAGE_ASSETS.about.legacy}
 							alt="Legacy"
 							fill
 							sizes="(max-width: 1024px) 100vw, 50vw"
@@ -62,7 +63,7 @@ export default function LegacySection() {
 					className="text-center mb-12"
 				>
 					<div className="section-subtitle mb-4">Leadership</div>
-					<h2 className="text-4xl md:text-5xl font-playfair font-bold text-white mb-6">
+					<h2 className="section-heading-light">
 						The Pillars of <span className="gradient-text">Progress</span>
 					</h2>
 				</motion.div>
@@ -75,13 +76,13 @@ export default function LegacySection() {
 						transition={{ duration: 0.6 }}
 						className="premium-card"
 					>
-						<h3 className="text-2xl font-playfair font-bold text-white mb-3">
+						<h3 className="text-2xl font-playfair font-bold text-charcoal mb-3">
 							Sri KR Ananth Mayyia
 						</h3>
-						<div className="text-gold-400 font-semibold mb-4">
-							Custodian of Scale and Structure
+						<div className="text-brandGold font-semibold mb-4">
+							Operations & Scale
 						</div>
-						<p className="text-gray-400 leading-relaxed">
+						<p className="text-muted leading-relaxed">
 							Carrying the legacy forward with foresight and fortitude, Sri K Ramakrishna Mayyia brought systematic excellence to the brand. Under his leadership, Sri Mayyia grew from a respected name in Bangalore to a regional powerhouse capable of executing high-volume events with immaculate detail. His deep understanding of logistics, client relationships, and quality control transformed the business into a well-oiled legacy enterprise.
 						</p>
 					</motion.div>
@@ -93,13 +94,13 @@ export default function LegacySection() {
 						transition={{ duration: 0.6, delay: 0.2 }}
 						className="premium-card"
 					>
-						<h3 className="text-2xl font-playfair font-bold text-white mb-3">
+						<h3 className="text-2xl font-playfair font-bold text-charcoal mb-3">
 							Mr. Akash Mayyia
 						</h3>
-						<div className="text-gold-400 font-semibold mb-4">
-							Visionary of the New Era
+						<div className="text-brandGold font-semibold mb-4">
+							Modern Vision & Experience
 						</div>
-						<p className="text-gray-400 leading-relaxed">
+						<p className="text-muted leading-relaxed">
 							As the third-generation entrepreneur, Akash Mayyia brings a refined, contemporary lens to the family legacy. With a background in luxury hospitality and a passion for innovation, he has expanded the brand's offering to include fusion cuisines, curated menus, modern presentation, and a seamless digital-first client experience. His leadership blends the grace of old-world traditions with the demands of new-age expectations.
 						</p>
 					</motion.div>
@@ -112,7 +113,7 @@ export default function LegacySection() {
 					transition={{ duration: 0.8 }}
 					className="text-center"
 				>
-					<p className="text-xl text-gray-300 font-playfair italic">
+					<p className="text-xl text-muted font-playfair italic">
 						Together, they ensure that Sri Mayyia stands not just as a service—but as an experience.
 					</p>
 				</motion.div>

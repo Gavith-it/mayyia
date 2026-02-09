@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRef } from 'react'
+import { IMAGE_ASSETS } from '@/lib/image-assets'
 
 export default function ReservationSection() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -22,7 +23,7 @@ export default function ReservationSection() {
         className="absolute inset-0 will-change-transform"
       >
         <Image
-          src="/images/anil-sharma-_uWcGe93l6w-unsplash.jpg"
+          src={IMAGE_ASSETS.home.reservationBg}
           alt="Restaurant"
           fill
           sizes="100vw"
@@ -52,7 +53,7 @@ export default function ReservationSection() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-5xl md:text-6xl lg:text-7xl font-playfair font-bold text-white mb-6"
           >
-            Not Just Caterers. <span className="gradient-text">Cultural Custodians</span>
+            Premium Vegetarian Catering, <span className="gradient-text">Crafted With Responsibility</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -61,7 +62,8 @@ export default function ReservationSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto"
           >
-            Sri Mayyia is not simply a service provider—we are a responsibility taker. Every event we cater becomes a reflection of your values, your traditions, and your hospitality.
+            We don&apos;t just cater events — we safeguard traditions and guest experience. Every menu,
+            every ritual requirement, and every service detail is handled with respect, precision, and pride.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -83,10 +85,14 @@ export default function ReservationSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                className="premium-card text-center p-6 min-h-[140px] flex flex-col justify-center"
+                className="h-full"
               >
-                <h3 className="text-lg font-playfair font-bold text-white mb-2 break-words leading-tight">{item.title}</h3>
-                <p className="text-sm text-gray-400 break-words leading-relaxed">{item.desc}</p>
+                <div
+                  className="premium-card text-center p-6 min-h-[140px] flex flex-col justify-center h-full transition-all duration-300 hover:border-brandGold hover:shadow-[0_12px_32px_rgba(90,16,37,0.12)]"
+                >
+                  <h3 className="text-lg font-playfair font-bold text-maroon mb-2 break-words leading-tight">{item.title}</h3>
+                  <p className="text-sm text-muted break-words leading-relaxed">{item.desc}</p>
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -107,7 +113,7 @@ export default function ReservationSection() {
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link href="/contact" className="btn-primary text-lg px-12 py-5">
-                Schedule Consultation
+                Schedule a Consultation
               </Link>
             </motion.div>
           </motion.div>

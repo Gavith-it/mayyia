@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 export default function VenuesSection() {
 	return (
-		<section className="section-padding bg-dark-900">
+		<section className="section-padding bg-beige">
 			<div className="container-custom">
 				<motion.div
 					initial={{ opacity: 0, y: 30 }}
@@ -14,10 +14,10 @@ export default function VenuesSection() {
 					className="text-center mb-12"
 				>
 					<div className="section-subtitle mb-4">Venues We Serve</div>
-					<h2 className="text-4xl md:text-5xl font-playfair font-bold text-white mb-6">
+					<h2 className="section-heading-light">
 						A Trusted Name Across the Most <span className="gradient-text">Iconic Spaces</span>
 					</h2>
-					<p className="text-lg text-gray-300 max-w-3xl mx-auto mb-8">
+					<p className="section-description-light mb-8">
 						Over the years, Sri Mayyia Caterers has become the preferred partner for some of South India's most premium wedding venues, temple halls, private estates, and destination locations.
 					</p>
 				</motion.div>
@@ -53,10 +53,10 @@ export default function VenuesSection() {
 							transition={{ duration: 0.6, delay: index * 0.1 }}
 							className="premium-card"
 						>
-							<h3 className="text-xl font-playfair font-bold text-white mb-2">
+							<h3 className="text-xl font-playfair font-bold text-charcoal mb-2">
 								{item.title}
 							</h3>
-							<p className="text-gray-400 leading-relaxed">{item.description}</p>
+							<p className="text-muted leading-relaxed">{item.description}</p>
 						</motion.div>
 					))}
 				</div>
@@ -68,7 +68,7 @@ export default function VenuesSection() {
 					transition={{ duration: 0.8 }}
 					className="text-center"
 				>
-					<p className="text-lg text-gray-300">
+					<p className="text-lg text-muted">
 						We operate with full independence and seamless coordination with your venue team.
 					</p>
 				</motion.div>

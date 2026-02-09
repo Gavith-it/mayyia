@@ -8,6 +8,15 @@
   --font-great-vibes: 'Great Vibes', cursive;
   --font-playfair: 'Playfair Display', serif;
   --font-montserrat: 'Montserrat', sans-serif;
+  /* Sri Mayyia brand palette – use only these for brand consistency */
+  --color-maroon: #5A1025;
+  --color-maroon-hover: #460C1C;
+  --color-gold: #C7A24B;
+  --color-beige: #F7F1E6;
+  --color-off-white: #FFFBF5;
+  --color-charcoal: #1E1A1A;
+  --color-muted: #6E6464;
+  --color-border: #E6D8C4;
 }
 
 * {
@@ -115,9 +124,9 @@ section:has([data-animating="true"]) {
 body {
   font-family: var(--font-montserrat);
   line-height: 1.6;
-  color: #1a1a1a;
+  color: var(--color-charcoal);
   overflow-x: hidden;
-  background: #0a0a0a;
+  background: var(--color-beige);
 }
 
 /* Premium Custom Scrollbar */
@@ -126,17 +135,17 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: var(--color-beige);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #d4af37, #f4d03f);
+  background: var(--color-gold);
   border-radius: 10px;
   transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #f4d03f, #d4af37);
+  background: var(--color-maroon);
 }
 
 /* Glassmorphism Utility */
@@ -154,9 +163,9 @@ body {
   border: none;
 }
 
-/* Premium Gradient Text */
+/* Premium Gradient Text – gold accent */
 .gradient-text {
-  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 50%, #d4af37 100%);
+  background: linear-gradient(135deg, var(--color-gold) 0%, #d4b85c 50%, var(--color-gold) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -169,17 +178,17 @@ body {
   50% { background-position: 100% 50%; }
 }
 
-/* Premium Glow Effects */
+/* Premium Glow Effects – brand gold */
 .glow-gold {
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3),
-              0 0 40px rgba(212, 175, 55, 0.2),
-              0 0 60px rgba(212, 175, 55, 0.1);
+  box-shadow: 0 0 20px rgba(199, 162, 75, 0.3),
+              0 0 40px rgba(199, 162, 75, 0.2),
+              0 0 60px rgba(199, 162, 75, 0.1);
 }
 
 .glow-gold-hover:hover {
-  box-shadow: 0 0 30px rgba(212, 175, 55, 0.5),
-              0 0 60px rgba(212, 175, 55, 0.3),
-              0 0 90px rgba(212, 175, 55, 0.2);
+  box-shadow: 0 0 30px rgba(199, 162, 75, 0.5),
+              0 0 60px rgba(199, 162, 75, 0.3),
+              0 0 90px rgba(199, 162, 75, 0.2);
   transition: box-shadow 0.3s ease;
 }
 
@@ -198,9 +207,14 @@ body {
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-black bg-gradient-to-r from-gold-400 via-gold-500 to-gold-400 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 relative overflow-hidden;
-    background-size: 200% auto;
-    animation: gradient-shift 3s ease infinite;
+    background: var(--color-maroon);
+    color: var(--color-off-white);
+    @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-lg transition-all duration-300 relative overflow-hidden;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-maroon-hover);
+    box-shadow: 0 0 0 1px var(--color-gold);
   }
 
   .btn-primary::before {
@@ -210,7 +224,7 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
     transition: left 0.5s;
   }
 
@@ -219,7 +233,14 @@ body {
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-gold-400 bg-transparent border-2 border-gold-400 rounded-lg hover:bg-gold-400/10 transition-all duration-300 transform hover:scale-105;
+    color: var(--color-maroon);
+    border: 2px solid var(--color-gold);
+    @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold bg-transparent rounded-lg transition-all duration-300;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--color-maroon);
+    background: rgba(90, 16, 37, 0.06);
   }
 
   .section-title {
@@ -227,7 +248,8 @@ body {
   }
 
   .section-subtitle {
-    @apply text-gold-400 font-semibold text-sm uppercase tracking-[0.2em] mb-4;
+    color: var(--color-gold);
+    @apply font-semibold text-sm uppercase tracking-[0.2em] mb-4;
   }
 
   .section-heading {
@@ -239,9 +261,41 @@ body {
     @apply text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed;
   }
 
-  /* Premium Card */
+  /* Light sections (beige bg): charcoal heading, muted description */
+  .section-heading-light {
+    font-family: var(--font-playfair), serif;
+    color: var(--color-charcoal);
+    @apply text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6;
+  }
+
+  .section-description-light {
+    color: var(--color-muted);
+    @apply text-lg md:text-xl max-w-3xl mx-auto leading-relaxed;
+  }
+
+  /* Premium Card – off-white on beige, brand border */
   .premium-card {
-    @apply bg-gradient-to-br from-dark-800/50 to-dark-900/50 backdrop-blur-xl rounded-2xl border border-gold-400/20 p-8 transition-all duration-500 hover:border-gold-400/40 hover:shadow-2xl hover:shadow-gold-400/10;
+    background: var(--color-off-white);
+    border: 1px solid var(--color-border);
+    color: var(--color-charcoal);
+    @apply rounded-2xl p-8 transition-all duration-300;
+    box-shadow: 0 1px 3px rgba(30, 26, 26, 0.06);
+  }
+
+  .premium-card:hover {
+    border-color: var(--color-gold);
+    box-shadow: 0 4px 12px rgba(30, 26, 26, 0.08);
+  }
+
+  /* Brand links: maroon text, gold underline on hover */
+  .link-brand {
+    color: var(--color-maroon);
+    @apply transition-colors duration-300;
+  }
+
+  .link-brand:hover {
+    color: var(--color-maroon);
+    box-shadow: 0 1px 0 0 var(--color-gold);
   }
 
   /* Parallax Container */

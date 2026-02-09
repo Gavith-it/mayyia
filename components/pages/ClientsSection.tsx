@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 export default function ClientsSection() {
 	return (
-		<section className="section-padding bg-gradient-to-b from-dark-900 via-dark-800 to-dark-900">
+		<section className="section-padding bg-beige">
 			<div className="container-custom">
 				<motion.div
 					initial={{ opacity: 0, y: 30 }}
@@ -14,10 +14,10 @@ export default function ClientsSection() {
 					className="text-center mb-12"
 				>
 					<div className="section-subtitle mb-4">Clients & Communities We Serve</div>
-					<h2 className="text-4xl md:text-5xl font-playfair font-bold text-white mb-6">
+					<h2 className="section-heading-light">
 						Trusted Across <span className="gradient-text">Generations</span>
 					</h2>
-					<p className="text-lg text-gray-300 max-w-3xl mx-auto mb-8">
+					<p className="section-description-light mb-8">
 						Our clientele is loyal. Our reputation is generational.
 					</p>
 				</motion.div>
@@ -38,7 +38,7 @@ export default function ClientsSection() {
 							transition={{ duration: 0.6, delay: index * 0.1 }}
 							className="premium-card text-center"
 						>
-							<p className="text-gray-300 leading-relaxed">{item}</p>
+							<p className="text-muted leading-relaxed">{item}</p>
 						</motion.div>
 					))}
 				</div>

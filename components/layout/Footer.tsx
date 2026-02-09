@@ -30,11 +30,10 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="relative bg-gradient-to-b from-dark-900 via-dark-800 to-dark-900 text-white overflow-hidden">
-      {/* Decorative Elements */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-gold-400 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gold-500 rounded-full blur-3xl"></div>
+    <footer className="relative bg-maroon text-offwhite overflow-hidden">
+      {/* Subtle gold accent */}
+      <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
+        <div className="absolute top-0 left-0 w-96 h-96 rounded-full blur-3xl" style={{ background: '#C7A24B' }}></div>
       </div>
 
       <div className="container-custom section-padding relative z-10">
@@ -49,17 +48,17 @@ export default function Footer() {
             <h3 className="text-3xl font-great-vibes font-normal gradient-text mb-6">
               Sri Mayyia <span className="font-playfair text-2xl">Caterers</span>
             </h3>
-            <p className="text-gray-400 mb-6 leading-relaxed">
+            <p className="text-offwhite/90 mb-6 leading-relaxed">
               Serving Culture. Preserving Legacy. Perfecting Hospitality.
             </p>
             <div className="flex space-x-4">
-              {socialLinks.map((social, index) => (
+              {socialLinks.map((social) => (
                 <motion.a
                   key={social.label}
                   href={social.href}
-                  whileHover={{ scale: 1.2, y: -5 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="w-10 h-10 flex items-center justify-center rounded-full glass border border-gold-400/20 text-gold-400 hover:bg-gold-400/10 hover:border-gold-400/40 transition-all duration-300"
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-10 h-10 flex items-center justify-center rounded-full border border-borderLight/30 text-brandGold hover:bg-brandGold/10 hover:border-brandGold/50 transition-all duration-300"
                   aria-label={social.label}
                 >
                   <social.icon className="w-5 h-5" />
@@ -75,15 +74,15 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h4 className="text-xl font-playfair font-semibold mb-6 text-gold-400">Quick Links</h4>
+            <h4 className="text-xl font-playfair font-semibold mb-6 text-brandGold">Quick Links</h4>
             <ul className="space-y-3">
               {footerLinks.quick.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-gold-400 transition-colors duration-300 flex items-center group"
+                    className="text-offwhite/90 hover:text-brandGold transition-colors duration-300 flex items-center group"
                   >
-                    <span className="w-0 group-hover:w-2 h-0.5 bg-gold-400 mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                    <span className="w-0 group-hover:w-2 h-0.5 bg-brandGold mr-0 group-hover:mr-2 transition-all duration-300"></span>
                     {link.label}
                   </Link>
                 </li>
@@ -98,12 +97,12 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className="text-xl font-oswald font-semibold mb-6 text-gold-400">Services</h4>
+            <h4 className="text-xl font-playfair font-semibold mb-6 text-brandGold">Services</h4>
             <ul className="space-y-3">
               {footerLinks.services.map((service, index) => (
                 <li key={index}>
-                  <span className="text-gray-400 flex items-center group">
-                    <span className="w-0 group-hover:w-2 h-0.5 bg-gold-400 mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                  <span className="text-offwhite/90 flex items-center group">
+                    <span className="w-0 group-hover:w-2 h-0.5 bg-brandGold mr-0 group-hover:mr-2 transition-all duration-300"></span>
                     {service.label}
                   </span>
                 </li>
@@ -118,26 +117,26 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h4 className="text-xl font-oswald font-semibold mb-6 text-gold-400">Contact Info</h4>
+            <h4 className="text-xl font-playfair font-semibold mb-6 text-brandGold">Contact Info</h4>
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
-                <FiMapPin className="w-5 h-5 text-gold-400 mt-1 flex-shrink-0" />
-                <span className="text-gray-400">
+                <FiMapPin className="w-5 h-5 text-brandGold mt-1 flex-shrink-0" />
+                <span className="text-offwhite/90">
                   Office: Bengaluru<br />
                   Service Radius: Pan-South India
                 </span>
               </li>
               <li className="flex items-center space-x-3">
-                <FiPhone className="w-5 h-5 text-gold-400 flex-shrink-0" />
-                <span className="text-gray-400">
-                  Contact us for details
-                </span>
+                <FiPhone className="w-5 h-5 text-brandGold flex-shrink-0" />
+                <a href="tel:+918012345678" className="text-offwhite/90 hover:text-brandGold transition-colors">
+                  +91 80 1234 5678
+                </a>
               </li>
               <li className="flex items-center space-x-3">
-                <FiMail className="w-5 h-5 text-gold-400 flex-shrink-0" />
-                <span className="text-gray-400">
-                  Contact us for details
-                </span>
+                <FiMail className="w-5 h-5 text-brandGold flex-shrink-0" />
+                <a href="mailto:info@srimayyia.com" className="text-offwhite/90 hover:text-brandGold transition-colors">
+                  info@srimayyia.com
+                </a>
               </li>
             </ul>
           </motion.div>
@@ -149,17 +148,17 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="border-t border-gold-400/20 pt-8"
+          className="border-t border-borderLight/20 pt-8"
         >
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-gray-500 text-sm mb-4 md:mb-0">
+            <div className="text-offwhite/80 text-sm mb-4 md:mb-0">
               © {currentYear} Sri Mayyia Caterers. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
-              <Link href="/privacy" className="text-gray-500 hover:text-gold-400 transition-colors">
+              <Link href="/privacy" className="text-offwhite/80 hover:text-brandGold transition-colors">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="text-gray-500 hover:text-gold-400 transition-colors">
+              <Link href="/terms" className="text-offwhite/80 hover:text-brandGold transition-colors">
                 Terms of Service
               </Link>
             </div>

@@ -4,18 +4,25 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { FiX } from 'react-icons/fi'
+import { IMAGE_ASSETS } from '@/lib/image-assets'
 
-const galleryImages = [
-  { id: 1, src: '/images/anil-sharma-_uWcGe93l6w-unsplash.jpg', title: 'Elegant Dining Room', category: 'Interior' },
-  { id: 2, src: '/images/anil-sharma-DKnqF7U2Aus-unsplash.jpg', title: 'Signature Dish', category: 'Food' },
-  { id: 3, src: '/images/anil-sharma-fImNmaN73zo-unsplash.jpg', title: 'Chef\'s Special', category: 'Food' },
-  { id: 4, src: '/images/anil-sharma-oNXMhtKKFec-unsplash.jpg', title: 'Premium Presentation', category: 'Food' },
-  { id: 5, src: '/images/anil-sharma-ynt5uoi4bTE-unsplash.jpg', title: 'Dessert Collection', category: 'Food' },
-  { id: 6, src: '/images/darko-trajkovic-Kh6iEyCS-Mg-unsplash.jpg', title: 'Private Dining', category: 'Interior' },
-  { id: 7, src: '/images/anil-sharma-1aahKeCCBIQ-unsplash.jpg', title: 'Wine Selection', category: 'Beverages' },
-  { id: 8, src: '/images/alexandra-bellanger-dHeKcZ0a-xY-unsplash.jpg', title: 'Evening Ambiance', category: 'Interior' },
-  { id: 9, src: '/images/anil-sharma-_uWcGe93l6w-unsplash.jpg', title: 'Fine Dining Experience', category: 'Interior' },
+const galleryTitles: { title: string; category: string }[] = [
+  { title: 'Elegant Dining Room', category: 'Interior' },
+  { title: 'Signature Dish', category: 'Food' },
+  { title: "Chef's Special", category: 'Food' },
+  { title: 'Premium Presentation', category: 'Food' },
+  { title: 'Dessert Collection', category: 'Food' },
+  { title: 'Private Dining', category: 'Interior' },
+  { title: 'Wine Selection', category: 'Beverages' },
+  { title: 'Evening Ambiance', category: 'Interior' },
+  { title: 'Fine Dining Experience', category: 'Interior' },
 ]
+const galleryImages = IMAGE_ASSETS.gallery.grid.map((src, i) => ({
+  id: i + 1,
+  src,
+  title: galleryTitles[i]?.title ?? '',
+  category: galleryTitles[i]?.category ?? 'Interior',
+}))
 
 export default function GalleryGrid() {
   const [selectedCategory, setSelectedCategory] = useState('All')
@@ -28,7 +35,7 @@ export default function GalleryGrid() {
     : galleryImages.filter(item => item.category === selectedCategory)
 
   return (
-    <section className="section-padding bg-dark-900">
+    <section className="section-padding bg-beige">
       <div className="container-custom">
         {/* Gallery Description */}
         <motion.div
@@ -38,7 +45,7 @@ export default function GalleryGrid() {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-6 leading-relaxed">
+          <p className="section-description-light mb-6">
             Our work is best experienced in person—but here is a glimpse of what we deliver.
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
@@ -57,11 +64,11 @@ export default function GalleryGrid() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="premium-card text-center"
               >
-                <p className="text-gray-300 text-sm">{item}</p>
+                <p className="text-muted text-sm">{item}</p>
               </motion.div>
             ))}
           </div>
-          <p className="text-gold-400 font-semibold text-lg italic">
+          <p className="text-brandGold font-semibold text-lg italic">
             This is not food photography. This is visual testimony.
           </p>
         </motion.div>
@@ -76,8 +83,8 @@ export default function GalleryGrid() {
               whileTap={{ scale: 0.95 }}
               className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
                 selectedCategory === category
-                  ? 'bg-gradient-to-r from-gold-400 to-gold-500 text-dark-900 shadow-lg glow-gold'
-                  : 'glass text-white hover:bg-gold-400/10 border border-gold-400/20'
+                  ? 'bg-brandGold text-charcoal shadow-lg'
+                  : 'bg-offwhite border border-borderLight text-charcoal hover:border-brandGold'
               }`}
             >
               {category}
@@ -112,7 +119,7 @@ export default function GalleryGrid() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                   <h3 className="text-xl font-playfair text-white mb-1">{item.title}</h3>
-                  <p className="text-gold-400 text-sm">{item.category}</p>
+                  <p className="text-brandGold text-sm">{item.category}</p>
                 </div>
               </motion.div>
             ))}
@@ -131,7 +138,7 @@ export default function GalleryGrid() {
             >
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 text-white hover:text-gold-400 transition-colors z-10"
+                className="absolute top-4 right-4 text-white hover:text-brandGold transition-colors z-10"
               >
                 <FiX className="w-8 h-8" />
               </button>
@@ -155,7 +162,7 @@ export default function GalleryGrid() {
                   <h3 className="text-2xl font-playfair mb-2">
                     {galleryImages.find(item => item.id === selectedImage)?.title}
                   </h3>
-                  <p className="text-gold-400">
+                  <p className="text-brandGold">
                     {galleryImages.find(item => item.id === selectedImage)?.category}
                   </p>
                 </div>

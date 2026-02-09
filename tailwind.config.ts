@@ -9,6 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        /* Sri Mayyia brand – use for consistent premium look */
+        maroon: '#5A1025',
+        maroonHover: '#460C1C',
+        brandGold: '#C7A24B',
+        beige: '#F7F1E6',
+        offwhite: '#FFFBF5',
+        charcoal: '#1E1A1A',
+        muted: '#6E6464',
+        borderLight: '#E6D8C4',
         primary: {
           50: '#fff7ed',
           100: '#ffedd5',
@@ -26,7 +35,7 @@ const config: Config = {
           100: '#fffce5',
           200: '#fff9c4',
           300: '#fff59d',
-          400: '#f4d03f',
+          400: '#C7A24B',
           500: '#d4af37',
           600: '#b8941f',
           700: '#9a7a1a',

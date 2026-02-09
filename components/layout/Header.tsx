@@ -2,13 +2,16 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiMenu, FiX } from 'react-icons/fi'
+import { IMAGE_ASSETS } from '@/lib/image-assets'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [logoError, setLogoError] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -61,22 +64,39 @@ export default function Header() {
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? 'glass-dark py-4 shadow-2xl border-none'
+            ? 'bg-beige/95 backdrop-blur-md py-4 shadow-sm border-b border-borderLight'
             : 'bg-transparent py-6'
         }`}
       >
         <div className="container-custom">
           <div className="flex items-center justify-between">
-            {/* Logo */}
-            <Link href="/" className="flex items-center space-x-3 group">
+            {/* Logo: add logo.svg or logo.png in public/images/logo/ */}
+            <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
+              {!logoError ? (
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: 'spring', stiffness: 400 }}
+                  className="relative h-8 w-auto sm:h-10 md:h-12 flex-shrink-0"
+                  style={{ minWidth: 32, maxWidth: 48 }}
+                >
+                  <Image
+                    src={IMAGE_ASSETS.logo.src}
+                    alt="Sri Mayyia Caterers"
+                    width={48}
+                    height={48}
+                    className="h-8 w-auto sm:h-10 md:h-12 object-contain object-left"
+                    onError={() => setLogoError(true)}
+                  />
+                </motion.div>
+              ) : null}
               <motion.div
-                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileHover={{ scale: 1.02 }}
                 transition={{ type: 'spring', stiffness: 400 }}
-                className="text-5xl font-great-vibes font-normal gradient-text"
+                className={`text-5xl font-great-vibes font-normal ${isScrolled ? 'gradient-text' : 'gradient-text'}`}
               >
                 Sri Mayyia
               </motion.div>
-              <span className="text-sm text-gold-400 font-playfair tracking-wider hidden sm:block font-semibold">
+              <span className={`text-sm font-playfair tracking-wider hidden sm:block font-semibold ${isScrolled ? 'text-brandGold' : 'text-gold-400'}`}>
                 CATERERS
               </span>
             </Link>
@@ -84,9 +104,9 @@ export default function Header() {
             {/* Menu Button - Shows on all screens */}
             <motion.button
               onClick={() => setIsMenuOpen(true)}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="p-2 text-white hover:text-gold-400 transition-colors relative z-[60]"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`p-2 transition-colors relative z-[60] ${isScrolled ? 'text-charcoal hover:text-brandGold' : 'text-white hover:text-gold-400'}`}
               aria-label="Open menu"
             >
               <FiMenu className="w-6 h-6" />

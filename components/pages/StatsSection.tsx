@@ -15,12 +15,12 @@ export default function StatsSection() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
 
   return (
-    <section className="section-padding relative overflow-hidden bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900">
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-gold-400 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gold-500 rounded-full blur-3xl"></div>
+    <section className="section-padding relative overflow-hidden bg-beige">
+      <div className="absolute inset-0 opacity-[0.06] pointer-events-none">
+        <div className="absolute top-0 left-0 w-96 h-96 rounded-full blur-3xl" style={{ background: '#C7A24B' }}></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full blur-3xl" style={{ background: '#C7A24B' }}></div>
       </div>
-      
+
       <div className="container-custom relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8" ref={ref}>
           {stats.map((stat, index) => (
@@ -45,7 +45,7 @@ export default function StatsSection() {
               >
                 {stat.value}
               </motion.div>
-              <div className="text-lg text-gray-300 font-medium">{stat.label}</div>
+              <div className="text-lg text-muted font-medium">{stat.label}</div>
             </motion.div>
           ))}
         </div>

@@ -5,20 +5,10 @@ import Link from 'next/link'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { FiArrowDown, FiPlay, FiPause } from 'react-icons/fi'
 import Image from 'next/image'
+import { IMAGE_ASSETS } from '@/lib/image-assets'
 
-const heroImages = [
-  '/images/anil-sharma-_uWcGe93l6w-unsplash.jpg',
-  '/images/anil-sharma-DKnqF7U2Aus-unsplash.jpg',
-  '/images/anil-sharma-fImNmaN73zo-unsplash.jpg',
-  '/images/anil-sharma-oNXMhtKKFec-unsplash.jpg',
-  '/images/anil-sharma-ynt5uoi4bTE-unsplash.jpg',
-  '/images/darko-trajkovic-Kh6iEyCS-Mg-unsplash.jpg',
-]
-
-const parallaxImages = [
-  '/images/jarren-rocks-nVFp3nTWAbA-unsplash.jpg',
-  '/images/alexandra-bellanger-dHeKcZ0a-xY-unsplash.jpg',
-]
+const heroImages = IMAGE_ASSETS.home.heroSliders
+const parallaxImages = IMAGE_ASSETS.home.parallax
 
 export default function PremiumHero() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -74,7 +64,7 @@ export default function PremiumHero() {
           onPlay={() => setIsVideoPlaying(true)}
           onPause={() => setIsVideoPlaying(false)}
         >
-          <source src="/images/1000141815.mp4" type="video/mp4" />
+          <source src={IMAGE_ASSETS.home.video} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
       </motion.div>
@@ -168,7 +158,7 @@ export default function PremiumHero() {
           className="mb-4"
         >
           <span className="text-gold-400 font-montserrat text-xs md:text-sm uppercase tracking-[0.3em] font-light">
-            Culinary Heritage. Precision Hospitality. Celebrations That Endure.
+            Legacy in Every Bite. Precision in Every Detail.
           </span>
         </motion.div>
 
@@ -202,9 +192,9 @@ export default function PremiumHero() {
           transition={{ duration: 0.8, delay: 1 }}
           className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 font-montserrat font-light leading-relaxed"
         >
-          For over six decades, Sri Mayyia Caterers has stood as a benchmark in the art of
-          premium vegetarian catering. Rooted in tradition and redefined through generations,
-          we craft gastronomic journeys for those who value excellence, integrity, and cultural depth.
+          Since 1953, Sri Mayyia has been Karnataka&apos;s trusted name for premium vegetarian catering
+          — bringing royal taste, refined presentation, and seamless service to weddings,
+          celebrations, and corporate occasions.
         </motion.p>
 
         <motion.div
@@ -221,7 +211,7 @@ export default function PremiumHero() {
             transition={{ delay: 1.4 }}
           >
             <Link href="/booking" className="btn-primary">
-              Schedule Consultation
+              Schedule a Consultation
             </Link>
           </motion.div>
           <motion.div
@@ -232,7 +222,7 @@ export default function PremiumHero() {
             transition={{ delay: 1.5 }}
           >
             <Link href="/menu" className="btn-secondary">
-              View Menu
+              Explore Our Menu
             </Link>
           </motion.div>
         </motion.div>

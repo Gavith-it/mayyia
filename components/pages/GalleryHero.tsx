@@ -2,13 +2,14 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { IMAGE_ASSETS } from '@/lib/image-assets'
 
 export default function GalleryHero() {
   return (
     <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <Image
-          src="/images/anil-sharma-fImNmaN73zo-unsplash.jpg"
+          src={IMAGE_ASSETS.gallery.hero}
           alt="Gallery"
           fill
           sizes="100vw"

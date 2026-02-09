@@ -53,7 +53,7 @@ export default function MenuContent() {
   const [activeCategory, setActiveCategory] = useState(0)
 
   return (
-    <section className="section-padding bg-dark-900">
+    <section className="section-padding bg-beige">
       <div className="container-custom">
         {/* Category Tabs */}
         <div className="flex flex-wrap justify-center gap-4 mb-16">
@@ -65,8 +65,8 @@ export default function MenuContent() {
               whileTap={{ scale: 0.95 }}
               className={`px-8 py-4 rounded-lg font-semibold transition-all duration-300 ${
                 activeCategory === index
-                  ? 'bg-gradient-to-r from-gold-400 to-gold-500 text-dark-900 shadow-lg glow-gold'
-                  : 'glass text-white hover:bg-gold-400/10 border border-gold-400/20'
+                  ? 'bg-brandGold text-charcoal shadow-lg'
+                  : 'bg-offwhite border border-borderLight text-charcoal hover:border-brandGold'
               }`}
             >
               {category.name}
@@ -91,12 +91,12 @@ export default function MenuContent() {
               className="premium-card group"
             >
               <div className="flex justify-between items-start mb-3">
-                <h3 className="text-xl font-playfair text-white group-hover:text-gold-400 transition-colors">
+                <h3 className="text-xl font-playfair text-charcoal group-hover:text-maroon transition-colors">
                   {item.name}
                 </h3>
-                <span className="text-gold-400 font-bold text-lg">{item.price}</span>
+                <span className="text-brandGold font-bold text-lg">{item.price}</span>
               </div>
-              <p className="text-gray-400 leading-relaxed">{item.description}</p>
+              <p className="text-muted leading-relaxed">{item.description}</p>
             </motion.div>
           ))}
         </motion.div>

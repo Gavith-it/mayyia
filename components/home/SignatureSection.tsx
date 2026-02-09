@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { CardsParallax, type iCardItem } from '@/components/ui/scroll-cards'
+import { IMAGE_ASSETS } from '@/lib/image-assets'
 
 const signatureDishes: iCardItem[] = [
 	{
@@ -9,7 +10,7 @@ const signatureDishes: iCardItem[] = [
 		description:
 			'Traditional South Indian vegetarian cuisine that honours culinary authenticity, from temple-style prasadam to elaborate wedding banquets.',
 		tag: 'service',
-		src: '/images/anil-sharma-DKnqF7U2Aus-unsplash.jpg',
+		src: IMAGE_ASSETS.home.signature[0],
 		link: '/about',
 		color: '#0a0a0a',
 		textColor: '#f4d03f',
@@ -19,7 +20,7 @@ const signatureDishes: iCardItem[] = [
 		description:
 			'Multi-cuisine vegetarian menus and impeccably trained hospitality teams for elite private, wedding, and corporate gatherings.',
 		tag: 'service',
-		src: '/images/anil-sharma-fImNmaN73zo-unsplash.jpg',
+		src: IMAGE_ASSETS.home.signature[1],
 		link: '/about',
 		color: '#1a1a1a',
 		textColor: '#f4d03f',
@@ -29,7 +30,7 @@ const signatureDishes: iCardItem[] = [
 		description:
 			'Menus designed with religious advisors to honour rituals, fasting guidelines, and ceremonial customs for every auspicious occasion.',
 		tag: 'service',
-		src: '/images/anil-sharma-oNXMhtKKFec-unsplash.jpg',
+		src: IMAGE_ASSETS.home.signature[2],
 		link: '/about',
 		color: '#0a0a0a',
 		textColor: '#f4d03f',
@@ -39,7 +40,7 @@ const signatureDishes: iCardItem[] = [
 		description:
 			'Disciplined, sanctified large-scale service for temple annadanams and community feeding across South India.',
 		tag: 'service',
-		src: '/images/anil-sharma-ynt5uoi4bTE-unsplash.jpg',
+		src: IMAGE_ASSETS.home.signature[3],
 		link: '/about',
 		color: '#1a1a1a',
 		textColor: '#f4d03f',
@@ -48,7 +49,7 @@ const signatureDishes: iCardItem[] = [
 
 export default function SignatureSection() {
 	return (
-		<section className="relative bg-dark-900">
+		<section className="relative bg-beige">
 			<div className="container-custom py-20">
 				<motion.div
 					initial={{ opacity: 0, y: 30 }}
@@ -58,12 +59,13 @@ export default function SignatureSection() {
 					className="section-title mb-16"
 				>
 					<div className="section-subtitle">What We Offer</div>
-					<h2 className="section-heading">
+					<h2 className="section-heading-light">
 						Curated <span className="gradient-text">Catering Experiences</span>
 					</h2>
-					<p className="section-description">
-						From sacred rituals to luxury weddings and corporate galas, Sri Mayyia crafts vegetarian catering
-						experiences that are rooted in culture and executed with uncompromising precision.
+					<p className="section-description-light">
+						From auspicious rituals to luxury weddings and corporate gatherings, Sri Mayyia crafts
+						vegetarian experiences rooted in culture — delivered with flawless planning, premium
+						presentation, and calm execution.
 					</p>
 				</motion.div>
 			</div>

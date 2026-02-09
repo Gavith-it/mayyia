@@ -2,13 +2,14 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { IMAGE_ASSETS } from '@/lib/image-assets'
 
 export default function AboutHero() {
   return (
     <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <Image
-          src="/images/anil-sharma-_uWcGe93l6w-unsplash.jpg"
+          src={IMAGE_ASSETS.about.hero}
           alt="About Us"
           fill
           sizes="100vw"

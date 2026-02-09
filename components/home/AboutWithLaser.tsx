@@ -216,16 +216,9 @@ export default function AboutSection() {
   return (
       <section
         ref={containerRef}
-        className="
-          relative
-          pt-8 pb-12
-          bg-gradient-to-b from-black via-dark-900 to-dark-800
-          overflow-visible
-          z-20
-        "
+        className="relative pt-8 pb-12 bg-beige overflow-visible z-20"
         style={{ position: 'relative' }}
       >
-
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* 3D Image Sphere */}
@@ -266,31 +259,31 @@ export default function AboutSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="section-heading text-left"
+              className="section-heading-light text-left"
             >
-              A Legacy of <span className="gradient-text">Excellence</span>
+              A Legacy Since <span className="gradient-text">1953</span>
             </motion.h2>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-gray-300 text-lg leading-relaxed"
+              className="text-charcoal text-lg leading-relaxed"
             >
-              For over six decades, Sri Mayyia Caterers has stood as a benchmark in the art of premium
-              vegetarian catering. Rooted in tradition and redefined through generations, we serve more
-              than just meals—we craft gastronomic journeys.
+              Sri Mayyia Caterers is built on heritage, discipline, and uncompromised vegetarian purity.
+              Across generations, we have elevated catering into a crafted hospitality experience — warm,
+              elegant, and exact.
             </motion.p>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-gray-400 leading-relaxed"
+              className="text-muted leading-relaxed"
             >
-              Founded by Sri. K Ramakrishna Mayyia with a singular vision—to elevate the act of feeding
-              into an offering of love, devotion, and discipline—our legacy is built on purity, process,
-              and hospitality that transforms events into enduring memories.
+              Founded by Sri K. Ramakrishna Mayyia, our philosophy is simple: food must honour
+              tradition, serve with grace, and be delivered with meticulous care — so every gathering feels
+              truly special.
             </motion.p>
 
             <motion.div
@@ -299,13 +292,13 @@ export default function AboutSection() {
               transition={{ delay: 0.5 }}
               className="grid grid-cols-2 gap-6 pt-6"
             >
-              <motion.div whileHover={{ scale: 1.05, y: -5 }} className="premium-card">
-                <div className="text-4xl font-playfair font-bold gradient-text mb-2">60+</div>
-                <div className="text-gray-400">Years of Culinary Heritage</div>
+              <motion.div whileHover={{ scale: 1.02, y: -2 }} className="premium-card">
+                <div className="text-4xl font-playfair font-bold gradient-text mb-2">73+</div>
+                <div className="text-muted">Years of Culinary Heritage</div>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.05, y: -5 }} className="premium-card">
-                <div className="text-4xl font-playfair font-bold gradient-text mb-2">50K+</div>
-                <div className="text-gray-400">Happy Guests</div>
+              <motion.div whileHover={{ scale: 1.02, y: -2 }} className="premium-card">
+                <div className="text-4xl font-playfair font-bold gradient-text mb-2">Thousands+</div>
+                <div className="text-muted">Happy Guests</div>
               </motion.div>
             </motion.div>
           </motion.div>

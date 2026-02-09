@@ -248,6 +248,8 @@ interface LaserFlowProps {
   falloffStart?: number;
   fogFallSpeed?: number;
   color?: string;
+  /** Background clear color (hex e.g. '#F7F1E6') so canvas matches section and no black bar */
+  clearColor?: string;
 }
 
 export const LaserFlow = ({
@@ -270,7 +272,8 @@ export const LaserFlow = ({
   decay = 1.1,
   falloffStart = 1.2,
   fogFallSpeed = 0.6,
-  color = '#FF79C6'
+  color = '#FF79C6',
+  clearColor: clearColorHex
 }: LaserFlowProps) => {
   const mountRef = useRef<HTMLDivElement>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
@@ -320,7 +323,8 @@ export const LaserFlow = ({
     renderer.setPixelRatio(currentDprRef.current);
     renderer.shadowMap.enabled = false;
     renderer.outputColorSpace = THREE.SRGBColorSpace;
-    renderer.setClearColor(0x000000, 1);
+    const clearColor = clearColorHex ? parseInt(clearColorHex.replace('#', ''), 16) : 0x000000;
+    renderer.setClearColor(clearColor, 1);
 
     const canvas = renderer.domElement;
     canvas.style.width = '100%';

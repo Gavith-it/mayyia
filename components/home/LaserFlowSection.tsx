@@ -16,13 +16,7 @@ export default function LaserFlowSection() {
   return (
     <section
       ref={sectionRef}
-      className="
-        relative w-full
-        h-[55vh]
-        bg-black
-        overflow-visible
-        z-10
-      "
+      className="relative w-full h-[42vh] bg-beige overflow-visible z-10"
     >
       {isMounted && (
         <motion.div
@@ -37,20 +31,29 @@ export default function LaserFlowSection() {
             dpr={typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1}
             horizontalBeamOffset={0.0}
             verticalBeamOffset={0.65}
-            color="#F4D03F"
-            wispDensity={2.5}
-            fogIntensity={1.0}
-            wispIntensity={9.0}
-            flowSpeed={0.5}
+            color="#C7A24B"
+            clearColor="#F7F1E6"
+            wispDensity={2.2}
+            fogIntensity={0.30}
+            wispIntensity={3.0}
+            flowSpeed={0.45}
             verticalSizing={6.0}
-            horizontalSizing={1.2}
-            flowStrength={0.6}
+            horizontalSizing={1.4}
+            flowStrength={0.32}
             decay={1.8}
             falloffStart={1.8}
-            fogFallSpeed={1.1}
+            fogFallSpeed={1.0}
           />
         </motion.div>
       )}
+      {/* Fade out the boundary so no visible line above Our Story */}
+      <div
+        className="absolute bottom-0 left-0 right-0 z-[1] pointer-events-none"
+        style={{
+          height: '32px',
+          background: 'linear-gradient(to bottom, transparent 0%, rgba(247,241,230,0.6) 50%, #F7F1E6 100%)',
+        }}
+      />
     </section>
   )
 }

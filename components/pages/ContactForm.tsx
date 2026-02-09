@@ -20,7 +20,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section className="section-padding bg-dark-900">
+    <section className="section-padding bg-beige">
       <div className="container-custom">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Contact Info */}
@@ -32,13 +32,13 @@ export default function ContactForm() {
               transition={{ duration: 0.6 }}
               className="premium-card"
             >
-              <div className="w-14 h-14 bg-gradient-to-br from-gold-400 to-gold-500 rounded-xl flex items-center justify-center mb-4 glow-gold">
-                <FiMapPin className="w-7 h-7 text-dark-900" />
+              <div className="w-14 h-14 bg-brandGold rounded-xl flex items-center justify-center mb-4">
+                <FiMapPin className="w-7 h-7 text-offwhite" />
               </div>
-              <h3 className="text-xl font-playfair font-semibold text-white mb-2">
+              <h3 className="text-xl font-playfair font-semibold text-charcoal mb-2">
                 Office
               </h3>
-              <p className="text-gray-400">
+              <p className="text-muted">
                 Bengaluru, Karnataka<br />
                 Service Radius: Pan-South India and Select Destination Cities
               </p>
@@ -51,14 +51,14 @@ export default function ContactForm() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="premium-card"
             >
-              <div className="w-14 h-14 bg-gradient-to-br from-gold-400 to-gold-500 rounded-xl flex items-center justify-center mb-4 glow-gold">
-                <FiPhone className="w-7 h-7 text-dark-900" />
+              <div className="w-14 h-14 bg-brandGold rounded-xl flex items-center justify-center mb-4">
+                <FiPhone className="w-7 h-7 text-offwhite" />
               </div>
-              <h3 className="text-xl font-playfair font-semibold text-white mb-2">
+              <h3 className="text-xl font-playfair font-semibold text-charcoal mb-2">
                 Phone
               </h3>
-              <p className="text-gray-400">
-                Contact us for details
+              <p className="text-muted">
+                +91 80 1234 5678
               </p>
             </motion.div>
 
@@ -69,14 +69,14 @@ export default function ContactForm() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="premium-card"
             >
-              <div className="w-14 h-14 bg-gradient-to-br from-gold-400 to-gold-500 rounded-xl flex items-center justify-center mb-4 glow-gold">
-                <FiMail className="w-7 h-7 text-dark-900" />
+              <div className="w-14 h-14 bg-brandGold rounded-xl flex items-center justify-center mb-4">
+                <FiMail className="w-7 h-7 text-offwhite" />
               </div>
-              <h3 className="text-xl font-playfair font-semibold text-white mb-2">
+              <h3 className="text-xl font-playfair font-semibold text-charcoal mb-2">
                 Email
               </h3>
-              <p className="text-gray-400">
-                Contact us for details
+              <p className="text-muted">
+                info@srimayyia.com
               </p>
             </motion.div>
 
@@ -87,13 +87,13 @@ export default function ContactForm() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="premium-card"
             >
-              <div className="w-14 h-14 bg-gradient-to-br from-gold-400 to-gold-500 rounded-xl flex items-center justify-center mb-4 glow-gold">
-                <FiClock className="w-7 h-7 text-dark-900" />
+              <div className="w-14 h-14 bg-brandGold rounded-xl flex items-center justify-center mb-4">
+                <FiClock className="w-7 h-7 text-offwhite" />
               </div>
-              <h3 className="text-xl font-playfair font-semibold text-white mb-2">
+              <h3 className="text-xl font-playfair font-semibold text-charcoal mb-2">
                 Schedule a Menu Consultation
               </h3>
-              <p className="text-gray-400">
+              <p className="text-muted">
                 Our culinary consultants will guide you through the process—understanding your needs, curating your menu, and ensuring your event is remembered for its taste and thoughtfulness.
               </p>
             </motion.div>
@@ -108,13 +108,13 @@ export default function ContactForm() {
               transition={{ duration: 0.6 }}
               className="premium-card"
             >
-              <h2 className="text-3xl font-playfair font-bold text-white mb-8">
+              <h2 className="text-3xl font-playfair font-bold text-charcoal mb-8">
                 Connect <span className="gradient-text">With Us</span>
               </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-white mb-2">
+                    <label className="block text-sm font-semibold text-charcoal mb-2">
                       Name *
                     </label>
                     <input
@@ -122,12 +122,12 @@ export default function ContactForm() {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 glass border border-gold-400/20 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-gold-400 text-white placeholder-gray-500 bg-transparent"
+                      className="w-full px-4 py-3 bg-offwhite border border-borderLight rounded-lg focus:ring-2 focus:ring-brandGold focus:border-brandGold text-charcoal placeholder-muted"
                       placeholder="Your name"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-white mb-2">
+                    <label className="block text-sm font-semibold text-charcoal mb-2">
                       Email *
                     </label>
                     <input
@@ -135,26 +135,26 @@ export default function ContactForm() {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 glass border border-gold-400/20 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-gold-400 text-white placeholder-gray-500 bg-transparent"
+                      className="w-full px-4 py-3 bg-offwhite border border-borderLight rounded-lg focus:ring-2 focus:ring-brandGold focus:border-brandGold text-charcoal placeholder-muted"
                       placeholder="your@email.com"
                     />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-white mb-2">
+                    <label className="block text-sm font-semibold text-charcoal mb-2">
                       Phone
                     </label>
                     <input
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 glass border border-gold-400/20 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-gold-400 text-white placeholder-gray-500 bg-transparent"
-                      placeholder="+1 (234) 567-890"
+                      className="w-full px-4 py-3 bg-offwhite border border-borderLight rounded-lg focus:ring-2 focus:ring-brandGold focus:border-brandGold text-charcoal placeholder-muted"
+                      placeholder="+91 80 1234 5678"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-white mb-2">
+                    <label className="block text-sm font-semibold text-charcoal mb-2">
                       Subject *
                     </label>
                     <input
@@ -162,13 +162,13 @@ export default function ContactForm() {
                       required
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      className="w-full px-4 py-3 glass border border-gold-400/20 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-gold-400 text-white placeholder-gray-500 bg-transparent"
+                      className="w-full px-4 py-3 bg-offwhite border border-borderLight rounded-lg focus:ring-2 focus:ring-brandGold focus:border-brandGold text-charcoal placeholder-muted"
                       placeholder="Subject"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-white mb-2">
+                  <label className="block text-sm font-semibold text-charcoal mb-2">
                     Message *
                   </label>
                   <textarea
@@ -176,7 +176,7 @@ export default function ContactForm() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     rows={6}
-                    className="w-full px-4 py-3 glass border border-gold-400/20 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-gold-400 text-white placeholder-gray-500 bg-transparent"
+                    className="w-full px-4 py-3 bg-offwhite border border-borderLight rounded-lg focus:ring-2 focus:ring-brandGold focus:border-brandGold text-charcoal placeholder-muted"
                     placeholder="Your message..."
                   />
                 </div>
