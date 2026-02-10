@@ -10,6 +10,8 @@ const greatVibes = Great_Vibes({
   weight: ['400'],
   subsets: ['latin'],
   variable: '--font-great-vibes',
+  display: 'swap',
+  preload: true,
 })
 
 const playfair = Playfair_Display({

@@ -5,9 +5,7 @@
 @import "tw-animate-css";
 
 :root {
-  --font-great-vibes: 'Great Vibes', cursive;
-  --font-playfair: 'Playfair Display', serif;
-  --font-montserrat: 'Montserrat', sans-serif;
+  /* Font variables are set by layout.tsx via next/font (--font-great-vibes, --font-playfair, --font-montserrat) so local and production match */
   /* Sri Mayyia brand palette – use only these for brand consistency */
   --color-maroon: #5A1025;
   --color-maroon-hover: #460C1C;

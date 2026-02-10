@@ -1,8 +1,10 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { FiMapPin, FiPhone, FiMail, FiFacebook, FiInstagram, FiTwitter, FiYoutube } from 'react-icons/fi'
+import { IMAGE_ASSETS } from '@/lib/image-assets'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -45,9 +47,22 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-great-vibes font-normal gradient-text mb-4">
-              Sri Mayyia <span className="font-playfair text-xl">Caterers</span>
-            </h3>
+            <Link href="/" className="inline-flex flex-wrap items-center gap-3 mb-4" aria-label="Sri Mayyia Caterers – Home">
+              <span className="relative block h-14 w-28 sm:h-16 sm:w-32 md:h-20 md:w-40 flex-shrink-0">
+                <Image
+                  src={IMAGE_ASSETS.logo.src}
+                  alt=""
+                  width={160}
+                  height={80}
+                  className="h-full w-auto object-contain object-left"
+                  quality={92}
+                />
+              </span>
+              <span className="text-2xl font-great-vibes font-normal gradient-text">
+                Sri Mayyia <span className="font-playfair text-xl">Caterers</span>
+              </span>
+            </Link>
+            <h3 className="sr-only">Sri Mayyia Caterers</h3>
             <p className="text-offwhite/90 mb-4 leading-relaxed text-sm">
               Serving Culture. Preserving Legacy. Perfecting Hospitality.
             </p>
