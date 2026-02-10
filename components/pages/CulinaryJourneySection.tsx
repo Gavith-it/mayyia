@@ -88,10 +88,11 @@ export default function CulinaryJourneySection() {
 						>
 							<Image
 								src={IMAGE_ASSETS.about.culinary}
-								alt="Culinary Journey"
+								alt="Our Process - Culinary excellence"
 								fill
-								sizes="(max-width: 768px) 100vw, 50vw"
+								sizes="(max-width: 768px) 100vw, 1200px"
 								className="object-cover"
+								quality={95}
 							/>
 							<div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
 						</motion.div>

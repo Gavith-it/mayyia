@@ -27,8 +27,9 @@ export default function WhatWeDoSection() {
 									src={IMAGE_ASSETS.about.whatWeDo[0]}
 									alt="Culinary Excellence"
 									fill
-									sizes="(max-width: 768px) 50vw, 25vw"
+									sizes="(max-width: 768px) 100vw, 520px"
 									className="object-cover"
+									quality={92}
 								/>
 								<div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 							</motion.div>
@@ -41,8 +42,9 @@ export default function WhatWeDoSection() {
 									src={IMAGE_ASSETS.about.whatWeDo[1]}
 									alt="Beautiful Experiences"
 									fill
-									sizes="(max-width: 768px) 50vw, 25vw"
+									sizes="(max-width: 768px) 100vw, 520px"
 									className="object-cover"
+									quality={92}
 								/>
 								<div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 							</motion.div>

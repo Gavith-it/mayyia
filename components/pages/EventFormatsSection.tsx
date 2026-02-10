@@ -1,35 +1,50 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import Link from 'next/link'
+import Image from 'next/image'
+import { IMAGE_ASSETS } from '@/lib/image-assets'
 
-const eventFormats = [
-	{
-		title: 'Buffet catering',
-		price: 'from $125 per person',
-		description: 'Perfect for large gatherings and corporate events',
-	},
-	{
-		title: 'Weddings catering',
-		price: 'from $215 per person',
-		description: 'Elegant and memorable wedding celebrations',
-	},
-	{
-		title: 'Corporate celebration',
-		price: 'from $107 per person',
-		description: 'Professional catering for business events',
-	},
-	{
-		title: 'Themed evening',
-		price: 'from $75 per person',
-		description: 'Unique themed experiences for special occasions',
-	},
-	{
-		title: 'Full-service catering',
-		price: 'from $315 per person',
-		description: 'Complete culinary service with premium experience',
-	},
+const operationalCards = [
+	{ title: 'Central Kitchen', description: 'A dedicated central kitchen with large-scale hygienic facilities' },
+	{ title: 'Logistics Network', description: 'A logistics and transport team operating across South India' },
+	{ title: 'Expert Team', description: 'A pantry of trained chefs across specialties' },
+	{ title: 'Event SOPs', description: 'Event-based SOPs for procurement, preparation, delivery, and service' },
 ]
+
+function OperationalCard({ item, index }: { item: { title: string; description: string }; index: number }) {
+	const [imgError, setImgError] = useState(false)
+	return (
+		<motion.div
+			initial={{ opacity: 0, y: 50 }}
+			whileInView={{ opacity: 1, y: 0 }}
+			viewport={{ once: true }}
+			transition={{ duration: 0.6, delay: index * 0.1 }}
+			whileHover={{ y: -10, scale: 1.02 }}
+			className="premium-card group overflow-hidden p-0 relative w-full aspect-[4/3] rounded-xl bg-[#E6D8C4]"
+		>
+			{/* Full-card image */}
+			{!imgError ? (
+				<Image
+					src={IMAGE_ASSETS.about.operationalCards[index]}
+					alt={item.title}
+					fill
+					sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+					className="object-cover transition-transform duration-500 group-hover:scale-105"
+					quality={92}
+					onError={() => setImgError(true)}
+				/>
+			) : null}
+			{/* Gradient overlay so text stays readable */}
+			<div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent pointer-events-none" />
+			{/* Text over image */}
+			<div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
+				<h3 className="text-2xl font-playfair font-bold mb-2 drop-shadow-sm">{item.title}</h3>
+				<p className="text-white/90 text-sm leading-relaxed drop-shadow-sm">{item.description}</p>
+			</div>
+		</motion.div>
+	)
+}
 
 export default function EventFormatsSection() {
 	return (
@@ -52,42 +67,8 @@ export default function EventFormatsSection() {
 				</motion.div>
 
 				<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-					{[
-						{
-							title: 'Central Kitchen',
-							description: 'A dedicated central kitchen with large-scale hygienic facilities',
-						},
-						{
-							title: 'Logistics Network',
-							description: 'A logistics and transport team operating across South India',
-						},
-						{
-							title: 'Expert Team',
-							description: 'A pantry of trained chefs across specialties',
-						},
-						{
-							title: 'Event SOPs',
-							description: 'Event-based SOPs for procurement, preparation, delivery, and service',
-						},
-					].map((item, index) => (
-						<motion.div
-							key={index}
-							initial={{ opacity: 0, y: 50 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.6, delay: index * 0.1 }}
-							whileHover={{ y: -10, scale: 1.02 }}
-							className="premium-card group"
-						>
-							<div className="mb-4">
-								<h3 className="text-2xl font-playfair font-bold text-charcoal mb-4">
-									{item.title}
-								</h3>
-								<p className="text-muted leading-relaxed">
-									{item.description}
-								</p>
-							</div>
-						</motion.div>
+					{operationalCards.map((item, index) => (
+						<OperationalCard key={index} item={item} index={index} />
 					))}
 				</div>
 

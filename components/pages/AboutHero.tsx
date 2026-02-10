@@ -10,10 +10,12 @@ export default function AboutHero() {
       <div className="absolute inset-0">
         <Image
           src={IMAGE_ASSETS.about.hero}
-          alt="About Us"
+          alt="About Sri Mayyia"
           fill
           sizes="100vw"
           className="object-cover"
+          quality={95}
+          priority
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/70 to-black/80" />
       </div>

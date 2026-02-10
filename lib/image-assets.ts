@@ -10,23 +10,22 @@ export const IMAGE_ASSETS = {
   home: {
     video: `${base}/home/video.mp4`,
     heroSliders: [
-      `${base}/home/slider-1.jpg`,
-      `${base}/home/slider-2.jpg`,
-      `${base}/home/slider-3.jpg`,
-      `${base}/home/slider-4.jpg`,
-      `${base}/home/slider-5.jpg`,
-      `${base}/home/slider-6.jpg`,
+      `${base}/home/0D4A5008.JPG`,
+      `${base}/home/0D4A5074.JPG`,
+      `${base}/home/10.jpg`,
+      `${base}/home/MDR56572.JPG`,
+      `${base}/home/MDR56676.JPG`,
     ],
     parallax: [
-      `${base}/home/parallax-1.jpg`,
-      `${base}/home/parallax-2.jpg`,
+      `${base}/home/0D4A5008.JPG`,
+      `${base}/home/0D4A5074.JPG`,
     ],
-    reservationBg: `${base}/home/reservation-bg.jpg`,
+    reservationBg: `${base}/home/0D4A3760.JPG`,
     signature: [
       `${base}/home/signature-1.jpg`,
-      `${base}/home/signature-2.jpg`,
-      `${base}/home/signature-3.jpg`,
-      `${base}/home/signature-4.jpg`,
+      `${base}/home/signature-2%20(2).JPG`,
+      `${base}/home/signature-3%20(3).JPG`,
+      `${base}/home/signature-4%20(4).JPG`,
     ],
     gallery: [
       `${base}/home/gallery-1.jpg`,
@@ -35,21 +34,44 @@ export const IMAGE_ASSETS = {
       `${base}/home/gallery-4.jpg`,
       `${base}/home/gallery-5.jpg`,
       `${base}/home/gallery-6.jpg`,
-      `${base}/home/gallery-7.jpg`,
+      `${base}/home/gallery-7.JPG`,
       `${base}/home/gallery-8.jpg`,
+    ],
+    /** Our Story sphere – your 12 images in public/images/home/ */
+    sphere: [
+      `${base}/home/sphere-1.jpg`,
+      `${base}/home/sphere-2.JPG`,
+      `${base}/home/sphere-3.JPG`,
+      `${base}/home/sphere-4.JPG`,
+      `${base}/home/sphere-5.JPG`,
+      `${base}/home/sphere-6.JPG`,
+      `${base}/home/sphere-7.JPG`,
+      `${base}/home/sphere-8.JPG`,
+      `${base}/home/sphere-9.JPG`,
+      `${base}/home/sphere-10.JPG`,
+      `${base}/home/sphere-11.JPG`,
+      `${base}/home/sphere-12.JPG`,
     ],
   },
   about: {
-    hero: `${base}/about/hero.jpg`,
+    hero: `${base}/about/_VG_9679%20copy.jpg`,
     legacy: `${base}/about/legacy.jpg`,
     whatWeDo: [
-      `${base}/about/whatwedo-1.jpg`,
-      `${base}/about/whatwedo-2.jpg`,
+      `${base}/about/0D4A3274.JPG`,
+      `${base}/about/0D4A8280.JPG`,
     ],
-    culinary: `${base}/about/culinary.jpg`,
+    culinary: `${base}/about/VG_05150%20copy.jpg`,
+    /** Operational cards: Central Kitchen, Logistics Network, Expert Team, Event SOPs */
+    operationalCards: [
+      `${base}/about/central-kitchen.jpg`,
+      `${base}/about/logistics-network.jpg`,
+      `${base}/about/expert-team.JPG`,
+      `${base}/about/event-sops.JPG`,
+    ],
   },
   menu: {
     hero: `${base}/menu/hero.jpg`,
+    sectionBg: `${base}/menu/07.jpg`,
   },
   gallery: {
     hero: `${base}/gallery/hero.jpg`,
@@ -81,8 +103,7 @@ export const IMAGE_ASSETS = {
     hero: `${base}/contact/hero.jpg`,
   },
   logo: {
-    /** Use logo.svg or logo.png in public/images/logo/ */
-    src: `${base}/logo/logo.svg`,
-    fallback: `${base}/logo/logo.png`,
+    /** Logo in public/images/logo/ — used in header (link to Home) */
+    src: `${base}/logo/Image__9_-removebg-preview.png`,
   },
 } as const

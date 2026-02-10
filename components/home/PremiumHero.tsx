@@ -78,8 +78,9 @@ export default function PremiumHero() {
           src={parallaxImages[0]}
           alt="Parallax"
           fill
-          sizes="(max-width: 1024px) 0vw, 256px"
+          sizes="(max-width: 1024px) 0vw, 512px"
           className="object-cover"
+          quality={92}
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
@@ -93,16 +94,17 @@ export default function PremiumHero() {
           src={parallaxImages[1]}
           alt="Parallax"
           fill
-          sizes="(max-width: 1024px) 0vw, 224px"
+          sizes="(max-width: 1024px) 0vw, 448px"
           className="object-cover"
+          quality={92}
           loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
       </motion.div>
 
-      {/* Animated Image Gallery (Floating) - Enhanced visibility */}
+      {/* Animated Image Gallery (Floating) - images 3–5 so all 5 hero images used once (1–2 = parallax) */}
       <div className="absolute inset-0 z-[1] pointer-events-none">
-        {heroImages.slice(0, 3).map((img, index) => (
+        {heroImages.slice(2, 5).map((img, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
@@ -132,8 +134,9 @@ export default function PremiumHero() {
                 src={img}
                 alt={`Gallery ${index}`}
                 fill
-                sizes="(max-width: 1280px) 0vw, 220px"
+                sizes="(max-width: 1280px) 0vw, 440px"
                 className="object-cover"
+                quality={92}
                 priority={index === 0}
                 loading={index === 0 ? undefined : 'lazy'}
                 onError={(e) => {

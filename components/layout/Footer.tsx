@@ -36,8 +36,8 @@ export default function Footer() {
         <div className="absolute top-0 left-0 w-96 h-96 rounded-full blur-3xl" style={{ background: '#C7A24B' }}></div>
       </div>
 
-      <div className="container-custom section-padding relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+      <div className="container-custom py-10 md:py-12 lg:py-14 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 mb-10">
           {/* About */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -45,23 +45,23 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-3xl font-great-vibes font-normal gradient-text mb-6">
-              Sri Mayyia <span className="font-playfair text-2xl">Caterers</span>
+            <h3 className="text-2xl font-great-vibes font-normal gradient-text mb-4">
+              Sri Mayyia <span className="font-playfair text-xl">Caterers</span>
             </h3>
-            <p className="text-offwhite/90 mb-6 leading-relaxed">
+            <p className="text-offwhite/90 mb-4 leading-relaxed text-sm">
               Serving Culture. Preserving Legacy. Perfecting Hospitality.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-3">
               {socialLinks.map((social) => (
                 <motion.a
                   key={social.label}
                   href={social.href}
                   whileHover={{ scale: 1.08 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 flex items-center justify-center rounded-full border border-borderLight/30 text-brandGold hover:bg-brandGold/10 hover:border-brandGold/50 transition-all duration-300"
+                  className="w-9 h-9 flex items-center justify-center rounded-full border border-borderLight/30 text-brandGold hover:bg-brandGold/10 hover:border-brandGold/50 transition-all duration-300"
                   aria-label={social.label}
                 >
-                  <social.icon className="w-5 h-5" />
+                  <social.icon className="w-4 h-4" />
                 </motion.a>
               ))}
             </div>
@@ -74,8 +74,8 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h4 className="text-xl font-playfair font-semibold mb-6 text-brandGold">Quick Links</h4>
-            <ul className="space-y-3">
+            <h4 className="text-lg font-playfair font-semibold mb-4 text-brandGold">Quick Links</h4>
+            <ul className="space-y-2">
               {footerLinks.quick.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -97,8 +97,8 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className="text-xl font-playfair font-semibold mb-6 text-brandGold">Services</h4>
-            <ul className="space-y-3">
+            <h4 className="text-lg font-playfair font-semibold mb-4 text-brandGold">Services</h4>
+            <ul className="space-y-2">
               {footerLinks.services.map((service, index) => (
                 <li key={index}>
                   <span className="text-offwhite/90 flex items-center group">
@@ -117,23 +117,23 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h4 className="text-xl font-playfair font-semibold mb-6 text-brandGold">Contact Info</h4>
-            <ul className="space-y-4">
-              <li className="flex items-start space-x-3">
-                <FiMapPin className="w-5 h-5 text-brandGold mt-1 flex-shrink-0" />
+            <h4 className="text-lg font-playfair font-semibold mb-4 text-brandGold">Contact Info</h4>
+            <ul className="space-y-3">
+              <li className="flex items-start space-x-2">
+                <FiMapPin className="w-4 h-4 text-brandGold mt-0.5 flex-shrink-0" />
                 <span className="text-offwhite/90">
                   Office: Bengaluru<br />
                   Service Radius: Pan-South India
                 </span>
               </li>
-              <li className="flex items-center space-x-3">
-                <FiPhone className="w-5 h-5 text-brandGold flex-shrink-0" />
+              <li className="flex items-center space-x-2">
+                <FiPhone className="w-4 h-4 text-brandGold flex-shrink-0" />
                 <a href="tel:+918012345678" className="text-offwhite/90 hover:text-brandGold transition-colors">
                   +91 80 1234 5678
                 </a>
               </li>
-              <li className="flex items-center space-x-3">
-                <FiMail className="w-5 h-5 text-brandGold flex-shrink-0" />
+              <li className="flex items-center space-x-2">
+                <FiMail className="w-4 h-4 text-brandGold flex-shrink-0" />
                 <a href="mailto:info@srimayyia.com" className="text-offwhite/90 hover:text-brandGold transition-colors">
                   info@srimayyia.com
                 </a>
@@ -148,7 +148,7 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="border-t border-borderLight/20 pt-8"
+          className="border-t border-borderLight/20 pt-6"
         >
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-offwhite/80 text-sm mb-4 md:mb-0">

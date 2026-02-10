@@ -13,6 +13,7 @@ export default function ChefsHero() {
           alt="Our Chefs"
           fill
           sizes="100vw"
+          quality={92}
           priority
           className="object-cover"
         />

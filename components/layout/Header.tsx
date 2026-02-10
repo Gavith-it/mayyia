@@ -8,9 +8,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FiMenu, FiX } from 'react-icons/fi'
 import { IMAGE_ASSETS } from '@/lib/image-assets'
 
+const SCROLL_TOP_THRESHOLD = 80
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [headerVisible, setHeaderVisible] = useState(true)
   const [logoError, setLogoError] = useState(false)
   const pathname = usePathname()
 
@@ -19,7 +22,10 @@ export default function Header() {
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          setIsScrolled(window.scrollY > 50)
+          const y = window.scrollY
+          setIsScrolled(y > 50)
+          // Show header only when at top (hero); hide once user has scrolled down
+          setHeaderVisible(y <= SCROLL_TOP_THRESHOLD)
           ticking = false
         })
         ticking = true
@@ -60,43 +66,48 @@ export default function Header() {
     <>
       <motion.header
         initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
+        animate={{ y: headerVisible ? 0 : '-100%' }}
+        transition={{ duration: 0.35, ease: 'easeOut' }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
             ? 'bg-beige/95 backdrop-blur-md py-4 shadow-sm border-b border-borderLight'
             : 'bg-transparent py-6'
         }`}
       >
-        <div className="container-custom">
-          <div className="flex items-center justify-between">
-            {/* Logo: add logo.svg or logo.png in public/images/logo/ */}
-            <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
+        <div className="container-custom overflow-visible">
+          <div className="flex items-center justify-between overflow-visible">
+            {/* Logo: left, link to Home — extra py so script text (Sri Mayyia) isn't cut top/bottom */}
+            <Link
+              href="/"
+              className="flex items-center gap-0 group py-2 pl-5 pr-4 sm:py-2.5 sm:pl-6 sm:pr-5 md:py-3 md:pl-6 md:pr-6 min-h-[56px] overflow-visible"
+              aria-label="Sri Mayyia Caterers – Home"
+            >
               {!logoError ? (
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: 'spring', stiffness: 400 }}
-                  className="relative h-8 w-auto sm:h-10 md:h-12 flex-shrink-0"
-                  style={{ minWidth: 32, maxWidth: 48 }}
+                  className="relative flex-shrink-0 overflow-visible h-[32px] sm:h-9 md:h-20 w-auto min-w-[72px] sm:min-w-[88px] md:min-w-[160px] max-w-[140px] md:max-w-[220px] -mr-2 md:-mr-3"
                 >
                   <Image
                     src={IMAGE_ASSETS.logo.src}
                     alt="Sri Mayyia Caterers"
-                    width={48}
-                    height={48}
-                    className="h-8 w-auto sm:h-10 md:h-12 object-contain object-left"
+                    width={240}
+                    height={80}
+                    className="h-full w-auto max-w-full object-contain object-left"
+                    quality={92}
                     onError={() => setLogoError(true)}
+                    priority
                   />
                 </motion.div>
               ) : null}
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: 'spring', stiffness: 400 }}
-                className={`text-5xl font-great-vibes font-normal ${isScrolled ? 'gradient-text' : 'gradient-text'}`}
+                className={`text-5xl font-great-vibes font-normal leading-none overflow-visible pt-1 pb-1 sm:pt-1.5 sm:pb-1.5 -ml-2 md:-ml-3 ${isScrolled ? 'gradient-text' : 'gradient-text'}`}
               >
                 Sri Mayyia
               </motion.div>
-              <span className={`text-sm font-playfair tracking-wider hidden sm:block font-semibold ${isScrolled ? 'text-brandGold' : 'text-gold-400'}`}>
+              <span className={`text-sm font-playfair tracking-wider hidden sm:block font-semibold leading-tight overflow-visible ml-1 sm:ml-1.5 ${isScrolled ? 'text-brandGold' : 'text-gold-400'}`}>
                 CATERERS
               </span>
             </Link>

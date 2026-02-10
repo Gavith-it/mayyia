@@ -47,8 +47,9 @@ export default function LegacySection() {
 							src={IMAGE_ASSETS.about.legacy}
 							alt="Legacy"
 							fill
-							sizes="(max-width: 1024px) 100vw, 50vw"
+							sizes="(max-width: 1024px) 100vw, 960px"
 							className="object-cover"
+							quality={92}
 						/>
 						<div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 					</motion.div>

@@ -51,6 +51,16 @@ interface CircularGalleryProps
    * Optional class name to override the default font (e.g., from Next/font).
    */
   fontClassName?: string;
+  /**
+   * If true, the gallery automatically scrolls left so all images are visible. Loops seamlessly.
+   * @default true
+   */
+  autoScroll?: boolean;
+  /**
+   * Speed of auto-scroll (positive = scroll left). Only used when autoScroll is true.
+   * @default 0.15
+   */
+  autoScrollSpeed?: number;
 }
 
 /* --------------------------------
@@ -290,6 +300,8 @@ class Media {
         uniform vec2 uPlaneSizes;
         uniform sampler2D tMap;
         uniform float uBorderRadius;
+        uniform float uImageLoaded;
+        uniform vec3 uPlaceholderColor;
         varying vec2 vUv;
         
         float roundedBoxSDF(vec2 p, vec2 b, float r) {
@@ -306,7 +318,9 @@ class Media {
             vUv.x * ratio.x + (1.0 - ratio.x) * 0.5,
             vUv.y * ratio.y + (1.0 - ratio.y) * 0.5
           );
-          vec4 color = texture2D(tMap, uv);
+          vec4 texColor = texture2D(tMap, uv);
+          vec4 placeholder = vec4(uPlaceholderColor, 1.0);
+          vec4 color = mix(placeholder, texColor, uImageLoaded);
           
           float d = roundedBoxSDF(vUv - 0.5, vec2(0.5 - uBorderRadius), uBorderRadius);
           
@@ -324,6 +338,8 @@ class Media {
         uSpeed: { value: 0 },
         uTime: { value: 100 * Math.random() },
         uBorderRadius: { value: this.borderRadius },
+        uImageLoaded: { value: 0 },
+        uPlaceholderColor: { value: [0.969, 0.945, 0.902] },
       },
       transparent: true,
     });
@@ -337,6 +353,7 @@ class Media {
         img.naturalWidth,
         img.naturalHeight,
       ];
+      this.program.uniforms.uImageLoaded.value = 1;
     };
   }
 
@@ -466,6 +483,8 @@ class App {
   boundOnMouseMove!: (e: MouseEvent) => void;
   boundOnMouseEnter!: () => void;
   boundOnMouseLeave!: () => void;
+  autoScroll: boolean;
+  autoScrollSpeed: number;
 
   constructor(
     container: HTMLElement,
@@ -477,6 +496,8 @@ class App {
       font,
       scrollSpeed,
       scrollEase,
+      autoScroll,
+      autoScrollSpeed,
     }: {
       items?: GalleryItem[];
       bend: number;
@@ -485,10 +506,14 @@ class App {
       font: string;
       scrollSpeed: number;
       scrollEase: number;
+      autoScroll: boolean;
+      autoScrollSpeed: number;
     },
   ) {
     this.container = container;
     this.scrollSpeed = scrollSpeed;
+    this.autoScroll = autoScroll;
+    this.autoScrollSpeed = autoScrollSpeed;
     this.scroll = { ease: scrollEase, current: 0, target: 0, last: 0 };
     this.onCheckDebounce = debounce(this.onCheck.bind(this), 200);
 
@@ -658,6 +683,11 @@ class App {
       return;
     }
 
+    // Auto-scroll left so all images are visible; loops seamlessly via duplicate items + wrap
+    if (this.autoScroll && !this.isDown && !this.isHovering) {
+      this.scroll.target -= this.autoScrollSpeed;
+    }
+
     this.scroll.current = lerp(
       this.scroll.current,
       this.scroll.target,
@@ -724,6 +754,8 @@ const CircularGallery = ({
   borderRadius = 0.05,
   scrollSpeed = 2,
   scrollEase = 0.05,
+  autoScroll = true,
+  autoScrollSpeed = 0.15,
   className,
   fontClassName,
   ...props
@@ -731,7 +763,7 @@ const CircularGallery = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = React.useState(false);
 
-  // Intersection observer to only initialize when in view
+  // Initialize when section is in view or soon to be (rootMargin) so images load before user scrolls there
   useEffect(() => {
     if (!containerRef.current) return;
 
@@ -741,7 +773,7 @@ const CircularGallery = ({
           setIsInView(entry.isIntersecting);
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0, rootMargin: "400px 0px 400px 0px" }
     );
 
     observer.observe(containerRef.current);
@@ -768,12 +800,14 @@ const CircularGallery = ({
       font: computedFont,
       scrollSpeed,
       scrollEase,
+      autoScroll,
+      autoScrollSpeed,
     });
 
     return () => {
       app.destroy();
     };
-  }, [items, bend, borderRadius, scrollSpeed, scrollEase, fontClassName, isInView]);
+  }, [items, bend, borderRadius, scrollSpeed, scrollEase, autoScroll, autoScrollSpeed, fontClassName, isInView]);
 
   return (
     <div

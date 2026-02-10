@@ -1,6 +1,6 @@
 'use client'
 
-import { memo, useMemo } from 'react'
+import { memo, useMemo, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { FiArrowRight } from 'react-icons/fi'
@@ -11,18 +11,20 @@ const galleryTitles = [
   'Elegant Dining Room', 'Chef Special', 'Artisanal Presentation', 'Luxury Experience',
   'Sweet Indulgence', 'Exclusive Setting', 'Curated Wines', 'Romantic Atmosphere',
 ]
-const galleryItems: GalleryItem[] = [
-  ...IMAGE_ASSETS.home.gallery.slice(0, 8).map((image, i) => ({
-    image: image as string,
-    text: galleryTitles[i] ?? '',
-  })),
-  { image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80', text: 'Premium Ambiance' },
-  { image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80', text: 'Culinary Excellence' },
-  { image: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80', text: 'Master Chefs' },
-  { image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80', text: 'Elegant Design' },
-]
+const galleryItems: GalleryItem[] = IMAGE_ASSETS.home.gallery.map((image, i) => ({
+  image: image as string,
+  text: galleryTitles[i] ?? '',
+}))
 
 const GallerySection = memo(function GallerySection() {
+  // Preload gallery images as soon as the section is on the page so they're cached before user scrolls here
+  useEffect(() => {
+    IMAGE_ASSETS.home.gallery.forEach((src) => {
+      const img = new Image()
+      img.src = src
+    })
+  }, [])
+
   // Memoize gallery items to prevent re-renders
   const memoizedGalleryItems = useMemo(() => galleryItems, [])
 

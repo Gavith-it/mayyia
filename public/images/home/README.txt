@@ -1,10 +1,17 @@
 Home page images – add your files here. Names used by the site:
-- video.mp4          Hero background video
-- slider-1.jpg to slider-6.jpg   Hero fallback/slider images
-- parallax-1.jpg, parallax-2.jpg   Parallax layers (optional)
-- reservation-bg.jpg   Why Sri Mayyia section background
-- signature-1.jpg to signature-4.jpg   Curated experiences cards
-- gallery-1.jpg to gallery-8.jpg   Home gallery strip
-- laser-1.jpg to laser-20.jpg   Our Story sphere images (use as many as you have)
 
-Replace these files to change home page imagery.
+- video.mp4   Hero background video
+
+- Hero (floating + parallax): 0D4A1575.JPG, 0D4A5074.JPG, 10.jpg, MDR56572.JPG, MDR56676.JPG
+  First 2 = side parallax; images 3–5 = floating gallery.
+
+- OUR STORY SPHERE (round rotating images next to "A Legacy Since 1953"):
+  sphere-1.jpg, sphere-2.JPG … sphere-12.JPG (you have 12; 12–15 = smooth).
+
+- WHAT WE OFFER / Curated Catering Experiences (4 cards: South Indian, Luxury Event, Thematic Menus, Annadanam):
+  Add exactly 4 images in this folder: signature-1.jpg, signature-2.jpg, signature-3.jpg, signature-4.jpg
+  Card 1 = signature-1.jpg, Card 2 = signature-2.jpg, Card 3 = signature-3.jpg, Card 4 = signature-4.jpg.
+
+- reservation-bg.jpg, gallery-1–8.jpg (if you use those sections)
+
+Replace files with same names to update the site.

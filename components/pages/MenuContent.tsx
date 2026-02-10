@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
+import { IMAGE_ASSETS } from '@/lib/image-assets'
 
 const menuCategories = [
   {
@@ -53,8 +55,20 @@ export default function MenuContent() {
   const [activeCategory, setActiveCategory] = useState(0)
 
   return (
-    <section className="section-padding bg-beige">
-      <div className="container-custom">
+    <section className="section-padding relative overflow-hidden">
+      <div className="absolute inset-0">
+        <Image
+          src={IMAGE_ASSETS.menu.sectionBg}
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover"
+          quality={92}
+          priority={false}
+        />
+        <div className="absolute inset-0 bg-beige/90" />
+      </div>
+      <div className="container-custom relative z-10">
         {/* Category Tabs */}
         <div className="flex flex-wrap justify-center gap-4 mb-16">
           {menuCategories.map((category, index) => (

@@ -44,7 +44,8 @@ const Card: FC<iCardProps> = ({
 						src={src}
 						alt={title}
 						fill
-						sizes="(max-width: 768px) 100vw, 450px"
+						sizes="(max-width: 768px) 100vw, 1200px"
+						quality={92}
 						priority={i === 0}
 					/>
 					{/* Radial gradient overlay - keeps center subject visible, makes edges pure black */}
