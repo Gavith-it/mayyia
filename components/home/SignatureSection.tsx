@@ -8,7 +8,7 @@ const signatureDishes: iCardItem[] = [
 	{
 		title: 'Signature South Indian Catering',
 		description:
-			'Traditional South Indian vegetarian cuisine that honours culinary authenticity, from temple-style prasadam to elaborate wedding banquets.',
+			'Traditional South Indian vegetarian cuisine at the heart, with North Indian, Continental, Chinese, and Mexican offerings—honouring culinary authenticity, from temple-style prasadam to elaborate wedding banquets.',
 		tag: 'service',
 		src: IMAGE_ASSETS.home.signature[0],
 		link: '/about',
