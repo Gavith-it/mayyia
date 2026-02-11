@@ -16,7 +16,7 @@ import { X } from 'lucide-react';
  * - Collision detection to prevent image overlap
  * - Modal view for enlarged image display
  * - Touch support for mobile devices
- * - Customizable appearance and behavior
+ * - Customizable appearance and behaviori
  * - Performance optimized with proper z-indexing and visibility culling
  *
  * Usage:
@@ -282,7 +282,8 @@ const SphereImageGrid: React.FC<SphereImageGridProps> = ({
       const finalScale = scale * hoverScale;
 
       const isImageLoaded = loadedImagesRef.current.has(index);
-      const finalOpacity = fadeOpacity * (isImageLoaded ? 1 : 0);
+      // Show subtle placeholder for unloaded images so sphere structure is visible immediately (fixes "takes time" in prod)
+      const finalOpacity = fadeOpacity * (isImageLoaded ? 1 : 0.25);
 
       element.style.opacity = `${finalOpacity}`;
       element.style.zIndex = `${Math.round(1000 + z)}`;
@@ -442,6 +443,16 @@ const SphereImageGrid: React.FC<SphereImageGridProps> = ({
     setIsMounted(true);
   }, []);
 
+  // Preload all sphere images as soon as we have URLs so they're ready when section is in view (fixes slow appearance in prod)
+  useEffect(() => {
+    const list = images ?? [];
+    if (list.length === 0) return;
+    list.forEach((img: ImageData) => {
+      const preload = new Image();
+      preload.src = img.src;
+    });
+  }, [images]);
+
   // Intersection Observer - only start when section is in view
   useEffect(() => {
     if (!isMounted || !containerRef.current) return;
@@ -564,7 +575,7 @@ const SphereImageGrid: React.FC<SphereImageGridProps> = ({
         onClick={() => setSelectedImage(image)}
       >
         <div 
-          className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/30 hover:border-gold-400/80"
+          className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/30 hover:border-gold-400/80 bg-gray-300/80"
           style={{
             willChange: 'transform, opacity',
             transformStyle: 'preserve-3d',
@@ -577,7 +588,7 @@ const SphereImageGrid: React.FC<SphereImageGridProps> = ({
             alt={image.alt}
             className="w-full h-full object-cover"
             draggable={false}
-            loading={index < 15 ? 'eager' : 'lazy'}
+            loading="eager"
             style={{
               opacity: 0, // Start hidden - will be updated directly in DOM
               display: 'block',

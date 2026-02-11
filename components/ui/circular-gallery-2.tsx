@@ -344,17 +344,41 @@ class Media {
       transparent: true,
     });
 
-    const img = new Image();
-    img.crossOrigin = "anonymous";
-    img.src = this.image;
-    img.onload = () => {
-      texture.image = img;
+    const applyImage = (imageEl: HTMLImageElement) => {
+      texture.image = imageEl;
       this.program.uniforms.uImageSizes.value = [
-        img.naturalWidth,
-        img.naturalHeight,
+        imageEl.naturalWidth,
+        imageEl.naturalHeight,
       ];
       this.program.uniforms.uImageLoaded.value = 1;
     };
+
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => applyImage(img);
+    img.onerror = () => {
+      // CORS or path can fail in prod; retry without crossOrigin (same-origin will work)
+      const fallback = new Image();
+      fallback.onload = () => applyImage(fallback);
+      fallback.onerror = () => {
+        // On case-sensitive servers (e.g. Linux), .JPG vs .jpg can 404; try opposite case
+        const altUrl = this.image.endsWith(".JPG")
+          ? this.image.slice(0, -4) + ".jpg"
+          : this.image.endsWith(".jpg")
+            ? this.image.slice(0, -4) + ".JPG"
+            : this.image;
+        if (altUrl !== this.image) {
+          const caseFallback = new Image();
+          caseFallback.onload = () => applyImage(caseFallback);
+          caseFallback.onerror = () => console.warn("[CircularGallery] Image failed to load:", this.image);
+          caseFallback.src = altUrl;
+        } else {
+          console.warn("[CircularGallery] Image failed to load:", this.image);
+        }
+      };
+      fallback.src = this.image;
+    };
+    img.src = this.image;
   }
 
   createMesh() {
