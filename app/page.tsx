@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic'
 import PremiumHero from '@/components/home/PremiumHero'
 import LaserFlowSection from '@/components/home/LaserFlowSection'
+import PreloadSphereImages from '@/components/home/PreloadSphereImages'
 
 // Lazy load heavy components for better performance
 
@@ -31,6 +32,7 @@ const ReservationSection = dynamic(() => import('@/components/home/ReservationSe
 export default function Home() {
   return (
     <>
+      <PreloadSphereImages />
       <PremiumHero />
       <LaserFlowSection />
       <AboutSection />

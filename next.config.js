@@ -22,9 +22,9 @@ const nextConfig = {
   swcMinify: true,
   // Optimize production builds
   productionBrowserSourceMaps: false,
-  // Enable experimental features for better performance
+  // Disable optimizeCss to avoid 404s on /_next/static/ in dev; re-enable for prod if desired
   experimental: {
-    optimizeCss: true,
+    optimizeCss: false,
   },
 }
 
