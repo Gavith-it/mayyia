@@ -1,21 +1,24 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiArrowUp } from 'react-icons/fi'
 
+const SCROLL_THRESHOLD = 300
+
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false)
+  const lastVisible = useRef(false)
 
   useEffect(() => {
     let ticking = false
     const toggleVisibility = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          if (window.scrollY > 300) {
-            setIsVisible(true)
-          } else {
-            setIsVisible(false)
+          const visible = window.scrollY > SCROLL_THRESHOLD
+          if (lastVisible.current !== visible) {
+            lastVisible.current = visible
+            setIsVisible(visible)
           }
           ticking = false
         })

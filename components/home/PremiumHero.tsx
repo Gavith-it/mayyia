@@ -51,7 +51,7 @@ export default function PremiumHero() {
       {/* Video Background Layer - Only Video #15 */}
       <motion.div
         style={{ scale: backgroundScale, opacity: backgroundOpacity }}
-        className="absolute inset-0 z-0 will-change-transform"
+        className="absolute inset-0 z-0"
       >
         <video
           ref={videoRef}
@@ -72,7 +72,7 @@ export default function PremiumHero() {
       {/* Parallax Image Layers - Optimized */}
       <motion.div
         style={{ y: parallaxY1, scale: parallaxScale1 }}
-        className="absolute top-20 right-10 w-64 h-96 rounded-2xl overflow-hidden opacity-60 z-[1] hidden lg:block will-change-transform"
+        className="absolute top-20 right-10 w-64 h-96 rounded-2xl overflow-hidden opacity-60 z-[1] hidden lg:block"
       >
         <Image
           src={parallaxImages[0]}
@@ -88,7 +88,7 @@ export default function PremiumHero() {
 
       <motion.div
         style={{ y: parallaxY2, scale: parallaxScale2 }}
-        className="absolute bottom-20 left-10 w-56 h-80 rounded-2xl overflow-hidden opacity-50 z-[1] hidden lg:block will-change-transform"
+        className="absolute bottom-20 left-10 w-56 h-80 rounded-2xl overflow-hidden opacity-50 z-[1] hidden lg:block"
       >
         <Image
           src={parallaxImages[1]}
@@ -121,7 +121,7 @@ export default function PremiumHero() {
               delay: index * 1.5,
               ease: 'easeInOut',
             }}
-            className="absolute will-change-transform hidden md:block"
+            className="absolute hidden md:block"
             style={{
               left: `${15 + index * 30}%`,
               top: `${25 + index * 20}%`,
@@ -152,7 +152,7 @@ export default function PremiumHero() {
       {/* Main Content */}
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
-        className="relative z-10 container-custom text-center text-white will-change-transform"
+        className="relative z-10 container-custom text-center text-white"
       >
         <motion.div
           initial={{ opacity: 0, y: 20 }}

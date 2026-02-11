@@ -20,7 +20,7 @@ export default function ReservationSection() {
     <section ref={containerRef} className="section-padding relative overflow-hidden">
       <motion.div
         style={{ scale }}
-        className="absolute inset-0 will-change-transform"
+        className="absolute inset-0"
       >
         <Image
           src={IMAGE_ASSETS.home.reservationBg}

@@ -29,14 +29,14 @@ const GallerySection = memo(function GallerySection() {
   const memoizedGalleryItems = useMemo(() => galleryItems, [])
 
   return (
-    <section className="section-padding relative overflow-hidden bg-beige">
+    <section className="pt-10 md:pt-14 pb-16 md:pb-20 relative overflow-hidden bg-beige">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8 }}
-          className="section-title mb-16"
+          className="section-title mb-10"
         >
           <div className="section-subtitle">Gallery</div>
           <h2 className="section-heading-light">

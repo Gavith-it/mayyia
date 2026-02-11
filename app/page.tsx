@@ -12,6 +12,10 @@ const SignatureSection = dynamic(() => import('@/components/home/SignatureSectio
   loading: () => <div className="h-[400px] bg-dark-800" />,
 })
 
+const CateringSpecialisationsSection = dynamic(() => import('@/components/home/CateringSpecialisationsSection'), {
+  loading: () => <div className="h-[400px] bg-beige" />,
+})
+
 const GallerySection = dynamic(() => import('@/components/home/GallerySection'), {
   loading: () => <div className="h-[800px] bg-dark-900" />,
 })
@@ -31,6 +35,7 @@ export default function Home() {
       <LaserFlowSection />
       <AboutSection />
       <SignatureSection />
+      <CateringSpecialisationsSection />
       <GallerySection />
       <ChefsSection />
       <ReservationSection />

@@ -37,6 +37,13 @@ export const IMAGE_ASSETS = {
       `${base}/home/gallery-7.JPG`,
       `${base}/home/gallery-8.jpg`,
     ],
+    /** Our Catering Specialisations slider – Slide 1: SMC 01, 2: tradition (02), 3: fruit/memorable (04), 4: Banner 03 */
+    specialisations: [
+      `${base}/home/SMC%20Web%20Banner%2001.jpg.jpeg`,
+      `${base}/home/Web%20Banner%2004%20copy.jpg.jpeg`,
+      `${base}/home/Web%20Banner%2002%20copy.jpg.jpeg`,
+      `${base}/home/Web%20Banner%2003%20copy.jpg.jpeg`,
+    ],
     /** Our Story sphere – your 12 images in public/images/home/ */
     sphere: [
       `${base}/home/sphere-1.jpg`,

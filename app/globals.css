@@ -94,9 +94,7 @@ html.lenis {
 /* Optimize scroll performance */
 section {
   contain: layout style paint;
-  /* GPU acceleration for smooth scrolling - only when needed */
-  transform: translateZ(0);
-  /* Remove will-change from all sections - apply only when animating */
+  /* No transform on every section to reduce compositor layers and improve scroll smoothness */
 }
 
 /* Apply will-change only to actively animating sections */

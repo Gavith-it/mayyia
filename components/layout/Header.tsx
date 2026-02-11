@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
@@ -16,6 +16,8 @@ export default function Header() {
   const [headerVisible, setHeaderVisible] = useState(true)
   const [logoError, setLogoError] = useState(false)
   const pathname = usePathname()
+  const lastScrolled = useRef(false)
+  const lastVisible = useRef(true)
 
   useEffect(() => {
     let ticking = false
@@ -23,9 +25,16 @@ export default function Header() {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const y = window.scrollY
-          setIsScrolled(y > 50)
-          // Show header only when at top (hero); hide once user has scrolled down
-          setHeaderVisible(y <= SCROLL_TOP_THRESHOLD)
+          const scrolled = y > 50
+          const visible = y <= SCROLL_TOP_THRESHOLD
+          if (lastScrolled.current !== scrolled) {
+            lastScrolled.current = scrolled
+            setIsScrolled(scrolled)
+          }
+          if (lastVisible.current !== visible) {
+            lastVisible.current = visible
+            setHeaderVisible(visible)
+          }
           ticking = false
         })
         ticking = true
